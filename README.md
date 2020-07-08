@@ -7,6 +7,7 @@
 ---
 
 1. Установить [**Node.js**](https://nodejs.org/en/) LTS
+2. Установить [**MongoDB**](https://www.mongodb.com/try/download/community) community
 2. Установить зависимости npm. Запустить в корне проекта **npm install**
 3. Опционально
 	* **npm start** запустить сервер
@@ -16,10 +17,16 @@
 ---
 
 ### Client package
-* **[Node.js]**(https://nodejs.org/en/)
-* **[Express]**(https://expressjs.com/ru/)
+* [**Node.js**](https://nodejs.org/en/)
+* [**Express**](https://expressjs.com/ru/)
+* [**mongodb**](https://www.npmjs.com/package/mongodb)
 ---
 
 ### Dev package
-* **[nodemone]**(https://nodemon.io/)
-* **[jasmine-node]**(https://github.com/mhevery/jasmine-node)
+* [**nodemone**](https://nodemon.io/)
+* [**jasmine-node**](https://github.com/mhevery/jasmine-node)
+---
+
+### Версия проекта
+
+***0.5.1-dev***

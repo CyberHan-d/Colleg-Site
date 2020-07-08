@@ -1,8 +1,11 @@
 const express = require("express");  // Подключение модулей
-const greeting = require("./greeting");
 const os = require("os");
+const bodyParser = require("body-parser");
+const mongodb = require("./database");
+const greeting = require("./greeting");
 
-// Global variable
+
+// Global variable 
 // date
 
 // создаем сервер
@@ -10,11 +13,13 @@ const app = express();
 
 app.use(express.static(__dirname + "/site"));
 
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+
 app.use("/log-in(.html)?", function (request, response) {
 	response.sendFile(__dirname + "/site/site_module/log-in.html");
 });
 
-app.use("/register(.html)?", function (request, response) {
+app.get("/register(.html)?", urlencodedParser, function (request, response) {
 	response.sendFile(__dirname + "/site/site_module/register.html");
 });
 
@@ -24,7 +29,7 @@ app.use(function (request, response) {
 });
 
 app.listen(3000);
-console.log("Стартанули сервер. Версия 0.3.0-dev");
+console.log("Стартанули сервер. Версия 0.5.1-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));
 

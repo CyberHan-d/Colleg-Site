@@ -1,12 +1,14 @@
 {
 	"name": "module",
-	"vesrion": "0.2.0",
+	"vesrion": "0.3.1",
 	"scripts": {
 		"start": "node app.js",
 		"dev": "nodemon app.js"
 	},
 	"dependencies": {
-		"express": "^4.17.1"
+		"body-parser": "^1.19.0",
+		"express": "^4.17.1",
+		"mongodb": "^3.5.9"
 	},
 	"devDependencies": {
 		"jasmine-node": "^3.0.0",
