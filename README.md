@@ -20,6 +20,8 @@
 * [**Node.js**](https://nodejs.org/en/)
 * [**Express**](https://expressjs.com/ru/)
 * [**mongodb**](https://www.npmjs.com/package/mongodb)
+* [**JQuery**](https://jquery.com/)
+* [**Webpack**](https://webpack.js.org/)
 ---
 
 ### Dev package
