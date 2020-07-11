@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const crash = require("./error");
 
-const url = "mongodb://localhost:27017/";
+const url = "mongodb://127.0.0.1/";
 const mongoClient = new MongoClient(url, {useNewUrlParser: true});
 mongoClient.connect(function (error, client) {
 
