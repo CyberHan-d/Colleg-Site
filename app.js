@@ -23,13 +23,21 @@ app.get("/register(.html)?", urlencodedParser, function (request, response) {
 	response.sendFile(__dirname + "/site/site_module/register.html");
 });
 
+app.get("/profile(.html)?", function (request, response) {
+	response.sendFile(__dirname + "/site/site_module/profile.html");
+});
+
+app.get("/home(.html)?", function (request, response) {
+	response.sendFile(__dirname + "/site/site_module/home.html");
+});
+
 app.use(function (request, response) {
 	
 	response.sendFile(__dirname + "/site/site_module/not-found.html");
 });
 
 app.listen(3000);
-console.log("Стартанули сервер. Версия 0.5.1-dev");
+console.log("Стартанули сервер. Версия 0.6.0-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));
 
