@@ -26,7 +26,7 @@ app.get("/register(.html)?", function (request, response) {
 	console.log("Page register load!");
 });
 
-app.post("/register(.html)?", parser, function (request, response) {
+app.post("api/student", parser, function (request, response) {
 
 	const name 			= request.body.name;
 	const firstName 	= request.body.firstName;
@@ -54,12 +54,13 @@ app.get("/home(.html)?", function (request, response) {
 });
 
 app.use(function (request, response) {
-	
 	response.sendFile(__dirname + "/site/site_module/not-found.html");
+
+	console.log("Страница не найдена");
 });
 
 app.listen(3000);
-console.log("Стартанули сервер. Версия 0.7.1-dev");
+console.log("Стартанули сервер. Версия 0.7.2-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));
 

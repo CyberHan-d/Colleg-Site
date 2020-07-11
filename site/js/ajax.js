@@ -1,6 +1,6 @@
 function creatUser(name, firstName, secondName, group) {
 	$.ajax ({
-		url: "/register(html.)?",
+		url: "api/student",
 		contentType: "application/json",
 		method: "POST",
 		data: JSON.stringify({
@@ -10,7 +10,8 @@ function creatUser(name, firstName, secondName, group) {
 			group: group
 		}),
 		success: function (student) {
+			console.log("success");
 			reset();
-		};
-	});
-};
+		}
+	})
+}
