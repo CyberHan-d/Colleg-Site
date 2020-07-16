@@ -1,6 +1,5 @@
 const express 		= require("express");  // Подключение модулей
 const expressHbs	= require("express-handlebars");
-const hbs 				= require("hbs");
 const os 					= require("os");
 const mongodb 		= require("./database");
 const greeting 		= require("./greeting");
@@ -14,14 +13,17 @@ const crash				= require("./error");
 const app = express();
 // const parser = express.json();
 
+app.use(express.static("/site"));
+app.use(express.urlencoded({extended: true}));
 
 app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + "/views/partials");
+// hbs.registerPartials(__dirname + "/views/partials");
 app.engine("hbs", expressHbs(
 	{
 		layoutsDir: 		"views/layouts",
 		defaultLayout: 	"layout",
-		extname: 				"hbs"
+		extname: 				"hbs",
+		// handlebars: allowInsecurePrototypeAccess(hbs)
 	}
 ));
 
@@ -36,14 +38,33 @@ app.route("/log-in(.html)?")
 	});
 
 app.route("/register(.html)?")
-	.get(function(reg, res) {
+	.get(async function(reg, res) {
+		const students = await Student.find().lean();
+
 		res.render("register", {
-			title: "Регистрация нового пользователя"
+			title: "Регистрация нового пользователя",
+			students
 		});
 
 		res.status(200);
 		console.log("Page register load!");
+	})
+	.post(async function(req, res) {
+		try {
+			const students = new Student({
+				name: req.body.name,
+				firstName: req.body.firstName,
+				secondName: req.body.secondName,
+				group: req.body.group
+			});
+
+			await students.save();
+		} catch(err) {
+			console.log("Не удалось отправить запрос");
+			console.log(err);
+		}
 	});
+
 
 	app.route("/profile(.html)?")
 		.get(function(req, res) {

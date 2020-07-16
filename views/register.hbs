@@ -1,10 +1,18 @@
 <h1>Зарегестрировать нового пользователя</h1>
 <form action="/register" method="POST">
   <label for="">Имя пользователя</label>
-  <input type="text" placeholder="Имя" name="name">
-  <input type="text" placeholder="Фамилия" name="firstName">
-  <input type="text" placeholder="Отчество" name="secondName">
+  <input type="text" placeholder="Имя" name="name" required>
+  <input type="text" placeholder="Фамилия" name="firstName" required>
+  <input type="text" placeholder="Отчество" name="secondName" required>
   <label for="">Группа</label>
-  <input type="text" placeholder="Группа (полностью)" name="group">
+  <input type="text" placeholder="Группа (полностью)" name="group" required>
   <input type="submit" value="Отправить">
 </form>
+<h2>Пользователи</h2>
+<ul>
+    {{#each students}}
+    <li>{{name}} {{firstName}} {{secondName}} {{group}}</li>
+    {{else}}
+    <li>Список пуст </li>
+    {{/each}}
+</ul>

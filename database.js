@@ -6,7 +6,7 @@ const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/
 async function start() {
 	try {
 		await mongo.connect(
-			"mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/",
+			"mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/kgk",
 			{
 				useNewUrlParser: true,
 				useFindAndModify: false
@@ -19,6 +19,29 @@ async function start() {
 };
 
 start();
+
+const Schema = mongo.Schema;
+
+const studentSchema = new Schema({
+	name: {
+		type: String,
+		required: true
+	},
+	firstName: {
+		type: String,
+		required: true
+	},
+	secondName: {
+		type: String,
+		required: true
+	},
+	group: {
+		type: String,
+		required: true
+	}
+});
+
+global.Student = mongo.model("students", studentSchema);
 // const mongoClient = new MongoClient(url, {useNewUrlParser: true});
 // mongoClient.connect(function (error, client) {
 //
