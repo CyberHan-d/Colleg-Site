@@ -8,6 +8,7 @@ const crash				= require("./error");
 
 // Global variable
 // date
+//Student
 
 // создаем сервер
 const app = express();
@@ -55,10 +56,15 @@ app.route("/register(.html)?")
 				name: req.body.name,
 				firstName: req.body.firstName,
 				secondName: req.body.secondName,
+				email: req.body.email,
 				group: req.body.group
 			});
 
 			await students.save();
+			res.status(200);
+			mongodb.sendMailNode(req.body.email);
+			console.log("Пользователь зарегестрирован");
+			res.redirect("/register");
 		} catch(err) {
 			console.log("Не удалось отправить запрос");
 			console.log(err);
@@ -115,6 +121,6 @@ app.use(function(reg, res) {
 // });
 
 app.listen(3000);
-console.log("Стартанули сервер. Версия 0.7.3-dev");
+console.log("Стартанули сервер. Версия 0.7.4-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));

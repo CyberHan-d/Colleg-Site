@@ -1,5 +1,6 @@
-const mongo	= require("mongoose");
-const crash = require("./error");
+const mongo				= require("mongoose");
+const nodemailer 	= require("nodemailer");
+const crash 			= require("./error");
 
 const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/";
 
@@ -38,10 +39,39 @@ const studentSchema = new Schema({
 	group: {
 		type: String,
 		required: true
-	}
+	},
+	email: {
+		type: String,
+		required: true
+	},
+	versionKey: false
+
 });
 
 global.Student = mongo.model("students", studentSchema);
+
+// const testEmailAccount = await nodemailer.createTestAccount();
+
+module.exports.sendMailNode = function (mailTo) {
+	const transporter = nodemailer.createTransport({
+		host: "smtp.ethereal.email",
+		port: 587,
+		secure: false,
+		auth: {
+			user: "lavern.franecki@ethereal.email",
+			pass: "36dsms7NbAabzJw9Rx",
+		},
+	});
+
+	const mail = transporter.sendMail({
+		from: "KGK College",
+		to: mailTo,
+		subject: "Регистрация на сайте",
+		text: "Hello bitch"
+	});
+
+	console.log("")
+};
 // const mongoClient = new MongoClient(url, {useNewUrlParser: true});
 // mongoClient.connect(function (error, client) {
 //
