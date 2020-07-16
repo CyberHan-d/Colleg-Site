@@ -1,6 +1,7 @@
 const express 		= require("express");  // Подключение модулей
+const expressHbs	= require("express-handlebars");
+const hbs 				= require("hbs");
 const os 					= require("os");
-const bodyParser 	= require("body-parser");
 const mongodb 		= require("./database");
 const greeting 		= require("./greeting");
 const crash				= require("./error");
@@ -11,88 +12,88 @@ const crash				= require("./error");
 
 // создаем сервер
 const app = express();
-const parser = express.json();
-
-app.use(express.static(__dirname + "/site"));
+// const parser = express.json();
 
 
-// app.use("/log-in(.html)?", function (request, response) {
-// 	response.sendFile(__dirname + "/site/site_module/log-in.html");
-//
-// 	console.log("Page log-in load!");
-// });
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials");
+app.engine("hbs", expressHbs(
+	{
+		layoutsDir: 		"views/layouts",
+		defaultLayout: 	"layout",
+		extname: 				"hbs"
+	}
+));
+
+// Route pages
 
 app.route("/log-in(.html)?")
 	.get(function(req, res) {
 		res.sendFile(__dirname + "/site/site_module/log-in.html");
 
+		res.status(200);
 		console.log("Page log-in load!");
 	});
 
-// app.get("/register(.html)?", function (request, response) {
-// 	response.sendFile(__dirname + "/site/site_module/register.html");
-//
-// 	console.log("Page register load!");
-// });
-
 app.route("/register(.html)?")
 	.get(function(reg, res) {
-		res.sendFile(__dirname + "/site/site_module/register.html");
+		res.render("register", {
+			title: "Регистрация нового пользователя"
+		});
 
+		res.status(200);
 		console.log("Page register load!");
 	});
 
-app.post("api/student", parser, function (request, response) {
+	app.route("/profile(.html)?")
+		.get(function(req, res) {
+			res.render("profile", {
+				title: "Ваш профиль"
+			});
 
-	const name 			= request.body.name;
-	const firstName 	= request.body.firstName;
-	const secondName 	= request.body.secondName;
-	const group 		= request.body.group;
+			res.status(200);
+			console.log("Page profile load!");
+		});
 
-	const studentTable 	= {name: name, firstName: firstName, secondName: secondName, group: group};
+	app.route("/home(.html)?")
+		.get(function(req, res) {
+			res.render("home", {
+				title: "Домашняя страница"
+			});
 
-	collectionStudents.insertOne(studentTable, function(error, result) {
+			res.status(200);
+			console.log("Page home load!");
+		});
 
-		if (error) return console.log("Ошибка в отправке данных Student " + crash.errorReturn(error));
+app.use(function(reg, res) {
+		res.render("not-found", {
+			title: "Страница улетела("
+		});
 
-		console.log("Data send");
-		response.send(studentTable);
+		res.status(404);
+		console.log("Страница не найдена");
 	});
 
-});
-
-app.route("/profile(.html)?")
-	.get(function(req, res) {
-		res.sendFile(__dirname + "/site/site_module/profile.html");
-
-		console.log("Page profile load!");
-	});
-
-app.route("/home(.html)?")
-	.get(function(req, res) {
-		res.sendFile(__dirname + "/site/site_module/home.html");
-
-		console.log("Page home load!");
-	});
-
-app.use(function (req, res) {
-	res.sendFile(__dirname + "/site/site_module/not-found.html");
-
-	res.status(404);
-	console.log("Страница не найдена");
-});
+// app.post("api/student", parser, function (request, response) {
+//
+// 	const name 			= request.body.name;
+// 	const firstName 	= request.body.firstName;
+// 	const secondName 	= request.body.secondName;
+// 	const group 		= request.body.group;
+//
+// 	const studentTable 	= {name: name, firstName: firstName, secondName: secondName, group: group};
+//
+// 	collectionStudents.insertOne(studentTable, function(error, result) {
+//
+// 		if (error) return console.log("Ошибка в отправке данных Student " + crash.errorReturn(error));
+//
+// 		console.log("Data send");
+// 		response.send(studentTable);
+// 	});
+//
+// });
 
 app.listen(3000);
-console.log("Стартанули сервер. Версия 0.7.2-dev");
+console.log("Стартанули сервер. Версия 0.7.3-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));
-
-// http.createServer(function (request, response) { // request - хранит данные запроса, response - отправляет ответ
-
-// 	response.end("Go NodeJS2X");
-
-// }).listen(3000, "127.0.0.1", function () {
-// 	console.log("Стартанули сервер. Версия 0.2.0-dev");
-// 	console.log(date);
-// 	console.log(greeting.getMessage(os.userInfo().username));
-// });
