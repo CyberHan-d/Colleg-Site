@@ -1,6 +1,7 @@
 const mongo							= require("mongoose");
 const nodemailer 				= require("nodemailer");
 const generatorPassword	= require("password-generator");
+const bcrypt						= require("bcrypt");
 const crash 						= require("./error");
 
 const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/";
@@ -81,6 +82,11 @@ module.exports.gPass = function() {
 
 	const gPass = generatorPassword(15, false, /\d/, "KGK-");
 	return gPass;
+};
+
+module.exports.passHash = function(pass) {
+	let salt = bcrypt.genSaltSync(10);
+	return bcrypt.hashSync(pass, salt);
 };
 // const mongoClient = new MongoClient(url, {useNewUrlParser: true});
 // mongoClient.connect(function (error, client) {

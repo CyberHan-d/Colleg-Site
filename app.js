@@ -54,13 +54,15 @@ app.route("/register(.html)?")
 		try {
 			let newPass = mongodb.gPass();
 			console.log(newPass);
+			let hashPass = mongodb.passHash(newPass);
+			console.log(hashPass);
 			const students = new Student({
 				name: req.body.name,
 				firstName: req.body.firstName,
 				secondName: req.body.secondName,
 				email: req.body.email,
 				group: req.body.group,
-				pass: newPass
+				pass: hashPass
 			});
 
 			await students.save();
