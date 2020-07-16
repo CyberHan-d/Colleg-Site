@@ -52,17 +52,20 @@ app.route("/register(.html)?")
 	})
 	.post(async function(req, res) {
 		try {
+			let newPass = mongodb.gPass();
+			console.log(newPass);
 			const students = new Student({
 				name: req.body.name,
 				firstName: req.body.firstName,
 				secondName: req.body.secondName,
 				email: req.body.email,
-				group: req.body.group
+				group: req.body.group,
+				pass: newPass
 			});
 
 			await students.save();
 			res.status(200);
-			mongodb.sendMailNode(req.body.email);
+			mongodb.sendMailNode(req.body.email, newPass, req.body.name);
 			console.log("Пользователь зарегестрирован");
 			res.redirect("/register");
 		} catch(err) {
@@ -101,26 +104,7 @@ app.use(function(reg, res) {
 		console.log("Страница не найдена");
 	});
 
-// app.post("api/student", parser, function (request, response) {
-//
-// 	const name 			= request.body.name;
-// 	const firstName 	= request.body.firstName;
-// 	const secondName 	= request.body.secondName;
-// 	const group 		= request.body.group;
-//
-// 	const studentTable 	= {name: name, firstName: firstName, secondName: secondName, group: group};
-//
-// 	collectionStudents.insertOne(studentTable, function(error, result) {
-//
-// 		if (error) return console.log("Ошибка в отправке данных Student " + crash.errorReturn(error));
-//
-// 		console.log("Data send");
-// 		response.send(studentTable);
-// 	});
-//
-// });
-
 app.listen(3000);
-console.log("Стартанули сервер. Версия 0.7.4-dev");
+console.log("Стартанули сервер. Версия 0.8.0-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));

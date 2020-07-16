@@ -1,6 +1,7 @@
-const mongo				= require("mongoose");
-const nodemailer 	= require("nodemailer");
-const crash 			= require("./error");
+const mongo							= require("mongoose");
+const nodemailer 				= require("nodemailer");
+const generatorPassword	= require("password-generator");
+const crash 						= require("./error");
 
 const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/";
 
@@ -44,15 +45,18 @@ const studentSchema = new Schema({
 		type: String,
 		required: true
 	},
+	pass: {
+		type: String
+	},
 	versionKey: false
 
 });
 
 global.Student = mongo.model("students", studentSchema);
 
-// const testEmailAccount = await nodemailer.createTestAccount();
+//mail
 
-module.exports.sendMailNode = function (mailTo) {
+module.exports.sendMailNode = function (mailTo, pass, name) {
 	const transporter = nodemailer.createTransport({
 		host: "smtp.ethereal.email",
 		port: 587,
@@ -67,10 +71,16 @@ module.exports.sendMailNode = function (mailTo) {
 		from: "KGK College",
 		to: mailTo,
 		subject: "Регистрация на сайте",
-		text: "Hello bitch"
+		text: "Привет " + name + " , добро пожаловать в систему дистанционного обучения. Твой пароль: " + pass
 	});
 
-	console.log("")
+};
+
+//pass
+module.exports.gPass = function() {
+
+	const gPass = generatorPassword(15, false, /\d/, "KGK-");
+	return gPass;
 };
 // const mongoClient = new MongoClient(url, {useNewUrlParser: true});
 // mongoClient.connect(function (error, client) {
