@@ -1,0 +1,33 @@
+{{> breadcrumbs-register}}
+<h1>Создать предподователя</h1>
+<form class="" action="/register/teacher" method="post">
+  <label for="">Имя предподователя</label>
+  <input type="text" name="name" placeholder="Имя" required>
+  <input type="text" name="firstName" placeholder="Фамилия" required>
+  <input type="text" name="secondName" placeholder="Отчество" required>
+  <label for="">Контакты</label>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="phone" placeholder="+7(xxx)-xx-xx" required>
+  <button type="submit" name="button">Создать</button>
+</form>
+<h2>Список предподователей</h2>
+<ul>
+    {{#each teachers}}
+    <li>
+      {{name}}
+      {{firstName}}
+      {{secondName}}
+      {{email}}
+      {{phone}}
+      <form class="" action="/register/teacher/delete" method="post">
+        <input type="hidden" name="id" value="{{_id}}">
+        <input type="hidden" name="name" value="{{name}}">
+        <input type="hidden" name="name" value="{{secondName}}">
+        <input type="hidden" name="email" value="{{email}}">
+        <button type="submit" name="button">Удалить</button>
+      </form>
+    </li>
+    {{else}}
+    <li>Список пуст </li>
+    {{/each}}
+</ul>

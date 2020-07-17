@@ -2,11 +2,11 @@
 <h1>Создать новую группу</h1>
 <form class="" action="/register/group" method="post">
   <label for="">Название группы</label>
-  <input type="text" name="name" placeholder="Название группы">
+  <input type="text" name="name" placeholder="Название группы" required>
   <label for="">Код группы</label>
-  <input type="number" name="code" placeholder="Код группы">
+  <input type="number" name="code" placeholder="Код группы" required>
   <label for="">Номер группы</label>
-  <input type="number" name="group" placeholder="Номер группы">
+  <input type="number" name="group" placeholder="Номер группы" required>
   <button type="submit" name="button">Создать</button>
 </form>
 <h2>Список групп</h2>
@@ -15,7 +15,7 @@
     <li>
       {{name}}
       {{code}}-{{group}}
-      <form class="" action="/register/student/delete" method="post">
+      <form class="" action="/register/group/delete" method="post">
         <input type="hidden" name="id" value="{{_id}}">
         <button type="submit" name="button">Удалить</button>
       </form>

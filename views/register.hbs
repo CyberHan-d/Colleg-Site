@@ -19,3 +19,39 @@
     <li>Список пуст </li>
     {{/each}}
 </ul>
+<h2>Список предподователей</h2>
+<ul>
+    {{#each teachers}}
+    <li>
+      {{name}}
+      {{firstName}}
+      {{secondName}}
+      {{email}}
+      {{phone}}
+      <form class="" action="/register/teacher/delete" method="post">
+        <input type="hidden" name="id" value="{{_id}}">
+        <input type="hidden" name="name" value="{{name}}">
+        <input type="hidden" name="name" value="{{secondName}}">
+        <input type="hidden" name="email" value="{{email}}">
+        <button type="submit" name="button">Удалить</button>
+      </form>
+    </li>
+    {{else}}
+    <li>Список пуст </li>
+    {{/each}}
+</ul>
+<h2>Список групп</h2>
+<ul>
+    {{#each groups}}
+    <li>
+      {{name}}
+      {{code}}-{{group}}
+      <form class="" action="/register/group/delete" method="post">
+        <input type="hidden" name="id" value="{{_id}}">
+        <button type="submit" name="button">Удалить</button>
+      </form>
+    </li>
+    {{else}}
+    <li>Список пуст </li>
+    {{/each}}
+</ul>

@@ -10,10 +10,10 @@ const crash				= require("./error");
 // date
 // Student
 // Group
+// Teacher
 
 // создаем сервер
 const app = express();
-// const parser = express.json();
 
 app.use(express.static("/public"));
 app.use(express.urlencoded({extended: true}));
@@ -25,7 +25,6 @@ app.engine("hbs", expressHbs(
 		layoutsDir: 		"views/layouts",
 		defaultLayout: 	"layout",
 		extname: 				"hbs",
-		// handlebars: allowInsecurePrototypeAccess(hbs)
 	}
 ));
 
@@ -42,14 +41,64 @@ app.route("/log-in(.html)?")
 app.route("/register")
 	.get(async function(req, res) {
 		const students = await Student.find().lean();
+		const groups = await Group.find().lean();
+		const teachers = await Teacher.find().lean();
 
 		res.render("register", {
 			title: "Общий список",
-			students
+			students,
+			groups,
+			teachers,
 		});
 
 		res.status(200);
 		console.log("Page register load!");
+	});
+
+app.route("/register/teacher")
+	.get(async function(req, res) {
+		const teachers = await Teacher.find().lean();
+
+		res.render("register-teacher", {
+			title: "Ргистрация предподователя",
+			teachers
+		});
+
+		res.status(200);
+		console.log("Page register/teacher load");
+	})
+	.post(async function(req, res) {
+		try {
+			let newPass		= mongodb.gPass();
+			let hashPass 	= mongodb.passHash(newPass);
+			let login			= req.body.firstName + "." + req.body.secondName;
+
+			const teachers = new Teacher({
+				name: req.body.name,
+				firstName: req.body.firstName,
+				secondName: req.body.secondName,
+				email: req.body.email,
+				phone: req.body.phone,
+				pass: hashPass,
+				login: login,
+			});
+
+			await teachers.save();
+			res.status(200);
+			mongodb.sendMailRegisterTeacher(req.body.email, newPass, req.body.name, req.body.secondName, login);
+			console.log("Предподователь создан");
+			res.redirect("/register/teacher");
+		} catch(err) {
+			console.log("Не удалось отправить запрос");
+			console.log(err);
+		}
+	});
+
+	app.post("/register/teacher/delete", async function(req, res) {
+		mongodb.sendMailDelete(req.body.email, req.body.name);
+		await Teacher.findByIdAndDelete(req.body.id);
+		console.log("Пользователь удален");
+		res.redirect("/register/teacher");
 	});
 
 app.route("/register/group")
@@ -80,6 +129,12 @@ app.route("/register/group")
 			console.log("Не удалось отправить запрос");
 			console.log(err);
 		}
+	});
+
+	app.post("/register/group/delete", async function(req, res) {
+		await Group.findByIdAndDelete(req.body.id);
+		console.log("Группа удалена");
+		res.redirect("/register/group");
 	});
 
 
@@ -115,7 +170,7 @@ app.route("/register/student")
 
 			await students.save();
 			res.status(200);
-			mongodb.sendMailRegister(req.body.email, newPass, req.body.name, login);
+			mongodb.sendMailRegisterStudent(req.body.email, newPass, req.body.name, login);
 			console.log("Пользователь зарегестрирован");
 			res.redirect("/register/student");
 		} catch(err) {
@@ -130,8 +185,6 @@ app.post("/register/student/delete", async function(req, res) {
 	console.log("Пользователь удален");
 	res.redirect("/register/student");
 });
-
-
 
 	app.route("/profile(.html)?")
 		.get(function(req, res) {

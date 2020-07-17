@@ -23,6 +23,8 @@ async function start() {
 
 start();
 
+//Schema
+
 const Schema = mongo.Schema;
 
 const studentSchema = new Schema({
@@ -71,12 +73,42 @@ const groupSchema = new Schema({
 	}
 });
 
+const teacherSchema = new Schema({
+	name: {
+		type: String,
+		required: true
+	},
+	firstName: {
+		type: String,
+		required: true
+	},
+	secondName: {
+		type: String,
+		required: true
+	},
+	email: {
+		type: String,
+		required: true
+	},
+	phone: {
+		type: Number,
+		required: true
+	},
+	pass: {
+		type: String
+	},
+	login: {
+		type: String
+	},
+});
+
 global.Student = mongo.model("students", studentSchema);
 global.Group = mongo.model("groups", groupSchema);
+global.Teacher = mongo.model("teachers", teacherSchema);
 
 //mail
 
-module.exports.sendMailRegister = function (mailTo, pass, name, login) {
+module.exports.sendMailRegisterStudent = function (mailTo, pass, name, login) {
 	const transporter = nodemailer.createTransport({
 		host: "smtp.ethereal.email",
 		port: 587,
@@ -92,6 +124,26 @@ module.exports.sendMailRegister = function (mailTo, pass, name, login) {
 		to: mailTo,
 		subject: "Регистрация на сайте",
 		text: "Привет " + name + " , добро пожаловать в систему дистанционного обучения. Твой пароль: " + pass + ". Твой логин: " + login
+	});
+
+};
+
+module.exports.sendMailRegisterTeacher = function (mailTo, pass, name, secondName, login) {
+	const transporter = nodemailer.createTransport({
+		host: "smtp.ethereal.email",
+		port: 587,
+		secure: false,
+		auth: {
+			user: "lavern.franecki@ethereal.email",
+			pass: "36dsms7NbAabzJw9Rx",
+		},
+	});
+
+	const mail = transporter.sendMail({
+		from: "KGK College",
+		to: mailTo,
+		subject: "Регистрация предподователя на сайте",
+		text: "Здравствуйте " + name + " " + secondName + " , добро пожаловать в систему дистанционного обучения. Ваш пароль: " + pass + ". Ваш логин: " + login
 	});
 
 };
