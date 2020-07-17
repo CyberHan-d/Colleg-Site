@@ -8,7 +8,8 @@ const crash				= require("./error");
 
 // Global variable
 // date
-//Student
+// Student
+// Group
 
 // создаем сервер
 const app = express();
@@ -38,17 +39,63 @@ app.route("/log-in(.html)?")
 		console.log("Page log-in load!");
 	});
 
-app.route("/register(.html)?")
-	.get(async function(reg, res) {
+app.route("/register")
+	.get(async function(req, res) {
 		const students = await Student.find().lean();
 
 		res.render("register", {
-			title: "Регистрация нового пользователя",
+			title: "Общий список",
 			students
 		});
 
 		res.status(200);
 		console.log("Page register load!");
+	});
+
+app.route("/register/group")
+	.get(async function(req, res) {
+		const groups = await Group.find().lean();
+
+		res.render("register-group", {
+			title: "Регистрация группы",
+			groups
+		});
+
+		res.status(200);
+		console.log("Page register/group load");
+	})
+	.post(async function(req, res) {
+		try {
+			const groups = new Group({
+				name: req.body.name,
+				code: req.body.code,
+				group: req.body.group,
+			});
+
+			await groups.save();
+			res.status(200);
+			console.log("Группа создана");
+			res.redirect("/register/group");
+		} catch(err) {
+			console.log("Не удалось отправить запрос");
+			console.log(err);
+		}
+	});
+
+
+app.route("/register/student")
+	.get(async function(reg, res) {
+		const students = await Student.find().lean();
+		const groups = await Group.find().lean();
+
+		res.render("register-student", {
+			title: "Регистрация студента",
+			students,
+			groups
+		});
+
+		res.status(200);
+		console.log("Page register/student load!");
 	})
 	.post(async function(req, res) {
 		try {
@@ -70,18 +117,18 @@ app.route("/register(.html)?")
 			res.status(200);
 			mongodb.sendMailRegister(req.body.email, newPass, req.body.name, login);
 			console.log("Пользователь зарегестрирован");
-			res.redirect("/register");
+			res.redirect("/register/student");
 		} catch(err) {
 			console.log("Не удалось отправить запрос");
 			console.log(err);
 		}
 	});
 
-app.post("/register/delete", async function(req, res) {
+app.post("/register/student/delete", async function(req, res) {
 	mongodb.sendMailDelete(req.body.email, req.body.name);
 	await Student.findByIdAndDelete(req.body.id);
 	console.log("Пользователь удален");
-	res.redirect("/register");
+	res.redirect("/register/student");
 });
 
 

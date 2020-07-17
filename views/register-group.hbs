@@ -1,0 +1,26 @@
+{{> breadcrumbs-register}}
+<h1>Создать новую группу</h1>
+<form class="" action="/register/group" method="post">
+  <label for="">Название группы</label>
+  <input type="text" name="name" placeholder="Название группы">
+  <label for="">Код группы</label>
+  <input type="number" name="code" placeholder="Код группы">
+  <label for="">Номер группы</label>
+  <input type="number" name="group" placeholder="Номер группы">
+  <button type="submit" name="button">Создать</button>
+</form>
+<h2>Список групп</h2>
+<ul>
+    {{#each groups}}
+    <li>
+      {{name}}
+      {{code}}-{{group}}
+      <form class="" action="/register/student/delete" method="post">
+        <input type="hidden" name="id" value="{{_id}}">
+        <button type="submit" name="button">Удалить</button>
+      </form>
+    </li>
+    {{else}}
+    <li>Список пуст </li>
+    {{/each}}
+</ul>

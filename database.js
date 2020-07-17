@@ -56,7 +56,23 @@ const studentSchema = new Schema({
 
 });
 
+const groupSchema = new Schema({
+	name: {
+		type: String,
+		required: true
+	},
+	code: {
+		type: Number,
+		required: true
+	},
+	group: {
+		type: Number,
+		required: true
+	}
+});
+
 global.Student = mongo.model("students", studentSchema);
+global.Group = mongo.model("groups", groupSchema);
 
 //mail
 

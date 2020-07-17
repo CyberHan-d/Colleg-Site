@@ -1,0 +1,38 @@
+{{> breadcrumbs-register}}
+<h1>Зарегестрировать нового пользователя</h1>
+<form action="/register/student" method="POST">
+  <label for="">Имя пользователя</label>
+  <input type="text" placeholder="Имя" name="name" required>
+  <input type="text" placeholder="Фамилия" name="firstName" required>
+  <input type="text" placeholder="Отчество" name="secondName" required>
+  <input type="email" name="email" placeholder="email" name="email">
+  <label for="">Группа</label>
+  <select class="" name="group">
+    {{#each groups}}
+    <option>{{name}} {{code}} {{group}}</option>
+    {{else}}
+    <option disabled>Создайте группы</option>
+    {{/each}}
+  </select>
+  <input type="submit" value="Отправить">
+</form>
+<h2>Пользователи</h2>
+<ul>
+    {{#each students}}
+    <li>
+      {{name}}
+      {{firstName}}
+      {{secondName}}
+      {{email}}
+      {{group}}
+      <form class="" action="/register/student/delete" method="post">
+        <input type="hidden" name="id" value="{{_id}}">
+        <input type="hidden" name="name" value="{{name}}">
+        <input type="hidden" name="email" value="{{email}}">
+        <button type="submit" name="button">Удалить</button>
+      </form>
+    </li>
+    {{else}}
+    <li>Список пуст </li>
+    {{/each}}
+</ul>
