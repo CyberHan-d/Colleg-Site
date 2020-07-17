@@ -12,7 +12,17 @@
 <h2>Пользователи</h2>
 <ul>
     {{#each students}}
-    <li>{{name}} {{firstName}} {{secondName}} {{email}} {{group}}</li>
+    <li>
+      {{name}}
+      {{firstName}}
+      {{secondName}}
+      {{email}}
+      {{group}}
+      <form class="" action="/register/delete" method="post">
+        <input type="hidden" name="id" value="{{_id}}">
+        <button type="submit" name="button">Удалить</button>
+      </form>
+    </li>
     {{else}}
     <li>Список пуст </li>
     {{/each}}

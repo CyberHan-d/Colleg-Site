@@ -52,22 +52,23 @@ app.route("/register(.html)?")
 	})
 	.post(async function(req, res) {
 		try {
-			let newPass = mongodb.gPass();
-			console.log(newPass);
-			let hashPass = mongodb.passHash(newPass);
-			console.log(hashPass);
+			let newPass		= mongodb.gPass();
+			let hashPass 	= mongodb.passHash(newPass);
+			let login			= req.body.firstName + "." + req.body.secondName;
+			console.log(login);
 			const students = new Student({
 				name: req.body.name,
 				firstName: req.body.firstName,
 				secondName: req.body.secondName,
 				email: req.body.email,
 				group: req.body.group,
-				pass: hashPass
+				pass: hashPass,
+				login: login,
 			});
 
 			await students.save();
 			res.status(200);
-			mongodb.sendMailNode(req.body.email, newPass, req.body.name);
+			mongodb.sendMailNode(req.body.email, newPass, req.body.name, login);
 			console.log("Пользователь зарегестрирован");
 			res.redirect("/register");
 		} catch(err) {
@@ -75,6 +76,13 @@ app.route("/register(.html)?")
 			console.log(err);
 		}
 	});
+
+app.post("/register/delete", async function(req, res) {
+	await Student.findByIdAndDelete(req.body.id);
+	console.log("Пользователь удален");
+	res.redirect("/register");
+});
+
 
 
 	app.route("/profile(.html)?")
@@ -107,6 +115,6 @@ app.use(function(reg, res) {
 	});
 
 app.listen(3000);
-console.log("Стартанули сервер. Версия 0.8.0-dev");
+console.log("Стартанули сервер. Версия 0.9.0-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));

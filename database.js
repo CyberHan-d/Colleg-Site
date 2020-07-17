@@ -49,6 +49,9 @@ const studentSchema = new Schema({
 	pass: {
 		type: String
 	},
+	login: {
+		type: String
+	},
 	versionKey: false
 
 });
@@ -57,7 +60,7 @@ global.Student = mongo.model("students", studentSchema);
 
 //mail
 
-module.exports.sendMailNode = function (mailTo, pass, name) {
+module.exports.sendMailNode = function (mailTo, pass, name, login) {
 	const transporter = nodemailer.createTransport({
 		host: "smtp.ethereal.email",
 		port: 587,
@@ -72,7 +75,7 @@ module.exports.sendMailNode = function (mailTo, pass, name) {
 		from: "KGK College",
 		to: mailTo,
 		subject: "Регистрация на сайте",
-		text: "Привет " + name + " , добро пожаловать в систему дистанционного обучения. Твой пароль: " + pass
+		text: "Привет " + name + " , добро пожаловать в систему дистанционного обучения. Твой пароль: " + pass + ". Твой логин: " + login
 	});
 
 };
