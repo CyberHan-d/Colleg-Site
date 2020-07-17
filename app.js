@@ -68,7 +68,7 @@ app.route("/register(.html)?")
 
 			await students.save();
 			res.status(200);
-			mongodb.sendMailNode(req.body.email, newPass, req.body.name, login);
+			mongodb.sendMailRegister(req.body.email, newPass, req.body.name, login);
 			console.log("Пользователь зарегестрирован");
 			res.redirect("/register");
 		} catch(err) {
@@ -78,6 +78,7 @@ app.route("/register(.html)?")
 	});
 
 app.post("/register/delete", async function(req, res) {
+	mongodb.sendMailDelete(req.body.email, req.body.name);
 	await Student.findByIdAndDelete(req.body.id);
 	console.log("Пользователь удален");
 	res.redirect("/register");

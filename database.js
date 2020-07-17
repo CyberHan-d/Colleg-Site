@@ -60,7 +60,7 @@ global.Student = mongo.model("students", studentSchema);
 
 //mail
 
-module.exports.sendMailNode = function (mailTo, pass, name, login) {
+module.exports.sendMailRegister = function (mailTo, pass, name, login) {
 	const transporter = nodemailer.createTransport({
 		host: "smtp.ethereal.email",
 		port: 587,
@@ -76,6 +76,26 @@ module.exports.sendMailNode = function (mailTo, pass, name, login) {
 		to: mailTo,
 		subject: "Регистрация на сайте",
 		text: "Привет " + name + " , добро пожаловать в систему дистанционного обучения. Твой пароль: " + pass + ". Твой логин: " + login
+	});
+
+};
+
+module.exports.sendMailDelete = function (mailTo,name) {
+	const transporter = nodemailer.createTransport({
+		host: "smtp.ethereal.email",
+		port: 587,
+		secure: false,
+		auth: {
+			user: "lavern.franecki@ethereal.email",
+			pass: "36dsms7NbAabzJw9Rx",
+		},
+	});
+
+	const mail = transporter.sendMail({
+		from: "KGK College",
+		to: mailTo,
+		subject: "Ваш аккаунт аннулирован",
+		text: "Привет " + name + ". Твой аккаунт удален"
 	});
 
 };
