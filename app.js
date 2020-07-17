@@ -14,7 +14,7 @@ const crash				= require("./error");
 const app = express();
 // const parser = express.json();
 
-app.use(express.static("/site"));
+app.use(express.static("/public"));
 app.use(express.urlencoded({extended: true}));
 
 app.set("view engine", "hbs");
