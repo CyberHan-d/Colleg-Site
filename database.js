@@ -4,12 +4,12 @@ const generatorPassword	= require("password-generator");
 const bcrypt						= require("bcrypt");
 const crash 						= require("./error");
 
-const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/";
+const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/kgk";
 
-async function start() {
+async function start(url) {
 	try {
 		await mongo.connect(
-			"mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/kgk",
+				url,
 			{
 				useNewUrlParser: true,
 				useFindAndModify: false
@@ -21,7 +21,7 @@ async function start() {
 	}
 };
 
-start();
+start(url);
 
 //Schema
 
@@ -178,6 +178,10 @@ module.exports.gPass = function() {
 module.exports.passHash = function(pass) {
 	let salt = bcrypt.genSaltSync(10);
 	return bcrypt.hashSync(pass, salt);
+};
+
+module.exports.compareHash = function (pass, hash) {
+	return bcrypt.compareSync(pass, hash)
 };
 // const mongoClient = new MongoClient(url, {useNewUrlParser: true});
 // mongoClient.connect(function (error, client) {

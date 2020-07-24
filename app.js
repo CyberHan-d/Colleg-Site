@@ -1,9 +1,13 @@
-const express 		= require("express");  // Подключение модулей
-const expressHbs	= require("express-handlebars");
-const os 					= require("os");
-const mongodb 		= require("./database");
-const greeting 		= require("./greeting");
-const crash				= require("./error");
+require("dotenv").config();
+const express 			= require("express");  // Подключение модулей
+const session				=	require("express-session");
+const expressHbs		= require("express-handlebars");
+const os 						= require("os");
+const passport			= require("passport");
+const MongoConnect	= require("connect-mongo");
+const initializePassport = require("./passport-config");
+const mongodb 			= require("./database");
+const greeting 			= require("./greeting");
 
 
 // Global variable
@@ -17,9 +21,20 @@ const app = express();
 
 app.use(express.static("/public"));
 app.use(express.urlencoded({extended: true}));
+// initializePassport(passport, login => {
+// 	return
+// });
+
+// app.use(session({
+// 	secret: process.env.SECRETKEY,
+// 	resave: false,
+// 	saveUninitialized: false,
+// 	store: new MongoConnect({
+// 		url: "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/kgk",
+// 	})
+// }));
 
 app.set("view engine", "hbs");
-// hbs.registerPartials(__dirname + "/views/partials");
 app.engine("hbs", expressHbs(
 	{
 		layoutsDir: 		"views/layouts",
@@ -29,13 +44,26 @@ app.engine("hbs", expressHbs(
 ));
 
 // Route pages
+// Student.findOne({login: req.body.username}) == req.body.username && 	Student.findOne({pass: mongodb.compareHash(req.body.password, mongodb.passHash(req.body.password))})
 
 app.route("/log-in(.html)?")
 	.get(function(req, res) {
-		res.sendFile(__dirname + "/site/site_module/log-in.html");
+		res.sendFile(__dirname + "/public/log-in.html");
 
 		res.status(200);
 		console.log("Page log-in load!");
+	})
+	.post(function(req, res) {
+		if(Student.findOne({"login": req.body.username}) && mongodb.compareHash(req.body.password, mongodb.passHash(req.body.password)) === true){
+			console.log("Вход успешен");
+			//
+			res.redirect("/home");
+		} else {
+			console.log();
+			console.log(Student.findOne({login: req.body.username}));
+			console.log("Пароль или логин не правильный!");
+			res.redirect("/log-in.html");
+		}
 	});
 
 app.route("/register")
@@ -215,7 +243,7 @@ app.use(function(reg, res) {
 		console.log("Страница не найдена");
 	});
 
-app.listen(3000);
+app.listen(process.env.PORT);
 console.log("Стартанули сервер. Версия 0.9.0-dev");
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));
