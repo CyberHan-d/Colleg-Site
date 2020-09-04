@@ -2,6 +2,7 @@ require("dotenv").config();
 const express 			= require("express");  // Подключение модулей
 const session				=	require("express-session");
 const expressHbs		= require("express-handlebars");
+const flash					= require("express-flash");
 const os 						= require("os");
 const passport			= require("passport");
 const MongoConnect	= require("connect-mongo");
@@ -19,7 +20,7 @@ const greeting 			= require("./greeting");
 // создаем сервер
 const app = express();
 
-app.use(express.static("/public"));
+app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({extended: true}));
 // initializePassport(passport, login => {
 // 	return
@@ -52,19 +53,20 @@ app.route("/log-in(.html)?")
 
 		res.status(200);
 		console.log("Page log-in load!");
+
 	})
-	.post(function(req, res) {
-		if(Student.findOne({"login": req.body.username}) && mongodb.compareHash(req.body.password, mongodb.passHash(req.body.password)) === true){
-			console.log("Вход успешен");
-			//
-			res.redirect("/home");
-		} else {
-			console.log();
-			console.log(Student.findOne({login: req.body.username}));
-			console.log("Пароль или логин не правильный!");
-			res.redirect("/log-in.html");
-		}
-	});
+	// .post(function(req, res) {
+	// 	if(Student.findOne({"login": req.body.username}) && mongodb.compareHash(req.body.password, mongodb.passHash(req.body.password)) === true){
+	// 		console.log("Вход успешен");
+	// 		//
+	// 		res.redirect("/home");
+	// 	} else {
+	// 		console.log();
+	// 		console.log(Student.findOne({login: req.body.username}));
+	// 		console.log("Пароль или логин не правильный!");
+	// 		res.redirect("/log-in.html");
+	// 	}
+	// });
 
 app.route("/register")
 	.get(async function(req, res) {
@@ -88,7 +90,7 @@ app.route("/register/teacher")
 		const teachers = await Teacher.find().lean();
 
 		res.render("register-teacher", {
-			title: "Ргистрация предподователя",
+			title: "Регистрация предподователя",
 			teachers
 		});
 
@@ -107,7 +109,7 @@ app.route("/register/teacher")
 				secondName: req.body.secondName,
 				email: req.body.email,
 				phone: req.body.phone,
-				pass: hashPass,
+				pass: newPass,
 				login: login,
 			});
 
@@ -192,7 +194,7 @@ app.route("/register/student")
 				secondName: req.body.secondName,
 				email: req.body.email,
 				group: req.body.group,
-				pass: hashPass,
+				pass: newPass,
 				login: login,
 			});
 

@@ -1,38 +1,77 @@
 {{> breadcrumbs-register}}
-<h1>Зарегестрировать нового пользователя</h1>
-<form action="/register/student" method="POST">
-  <label for="">Имя пользователя</label>
-  <input type="text" placeholder="Имя" name="name" required>
-  <input type="text" placeholder="Фамилия" name="firstName" required>
-  <input type="text" placeholder="Отчество" name="secondName" required>
-  <input type="email" name="email" placeholder="email" name="email">
-  <label for="">Группа</label>
-  <select class="" name="group">
-    {{#each groups}}
-    <option>{{name}} {{code}} {{group}}</option>
-    {{else}}
-    <option disabled>Создайте группы</option>
-    {{/each}}
-  </select>
-  <input type="submit" value="Отправить">
-</form>
-<h2>Пользователи</h2>
-<ul>
-    {{#each students}}
-    <li>
-      {{name}}
-      {{firstName}}
-      {{secondName}}
-      {{email}}
-      {{group}}
-      <form class="" action="/register/student/delete" method="post">
-        <input type="hidden" name="id" value="{{_id}}">
-        <input type="hidden" name="name" value="{{name}}">
-        <input type="hidden" name="email" value="{{email}}">
-        <button type="submit" name="button">Удалить</button>
-      </form>
-    </li>
-    {{else}}
-    <li>Список пуст </li>
-    {{/each}}
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Зарегестрировать нового пользователя</h1>
+    </div>
+  </div>
+  <form action="/register/student" method="POST">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <label for="name" class="form-label"> Имя студента </label>
+            <input type="text" id="name" class="form-control" placeholder="Имя" name="name" required>
+            <label for="firstName" class="form-label"> Фамилия студента </label>
+            <input type="text" id="firstName" class="form-control" placeholder="Фамилия" name="firstName" required>
+            <label for="secondName" class="form-label">Отчество студента</label>
+            <input type="text" id="secondName" class="form-control" placeholder="Отчество" name="secondName" required>
+        </div>
+        <div class="col-6">
+          <label for="email" class="form-label">Электронный адрес</label>
+          <input type="email" id="email" class="form-control" placeholder="email" name="email" required>
+          <label for="group">Группа</label>
+          <select class="form-select" name="group" id="group">
+            {{#each groups}}
+            <option>{{name}} {{code}} {{group}}</option>
+            {{else}}
+            <option disabled>Создайте группы</option>
+            {{/each}}
+          </select>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col">
+          <button type="submit" class="btn btn-primary"> Отправить </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <h2>Пользователи</h2>
+  <table class="table table-responsive">
+  {{#each students}}
+    <tr>
+      <td>
+        {{name}}
+      </td>
+      <td>
+        {{firstName}}
+      </td>
+      <td>
+        {{secondName}}
+      </td>
+      <td>
+        {{email}}
+      </td>
+      <td>
+        {{group}}
+      </td>
+      <td>
+        <form class="" action="/register/student/delete" method="post">
+          <input type="hidden" name="id" value="{{_id}}">
+          <input type="hidden" name="name" value="{{name}}">
+          <input type="hidden" name="email" value="{{email}}">
+          <button type="submit" class="btn btn-outline-danger" name="button">Удалить</button>
+        </form>
+      </td>
+    </tr>
+  {{else}}
+  </table>
+  <p>Вы пока ничего не добавили</p>
+  {{/each}}
+</div>
+<script type="text/javascript">
+  let register = false;
+  let register_student = true;
+  let register_teacher = false;
+  let register_group = false;
+</script>

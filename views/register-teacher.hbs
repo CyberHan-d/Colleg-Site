@@ -1,33 +1,60 @@
 {{> breadcrumbs-register}}
-<h1>Создать предподователя</h1>
-<form class="" action="/register/teacher" method="post">
-  <label for="">Имя предподователя</label>
-  <input type="text" name="name" placeholder="Имя" required>
-  <input type="text" name="firstName" placeholder="Фамилия" required>
-  <input type="text" name="secondName" placeholder="Отчество" required>
-  <label for="">Контакты</label>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="tel" name="phone" placeholder="+7(xxx)-xx-xx" required>
-  <button type="submit" name="button">Создать</button>
-</form>
-<h2>Список предподователей</h2>
-<ul>
-    {{#each teachers}}
-    <li>
-      {{name}}
-      {{firstName}}
-      {{secondName}}
-      {{email}}
-      {{phone}}
-      <form class="" action="/register/teacher/delete" method="post">
-        <input type="hidden" name="id" value="{{_id}}">
-        <input type="hidden" name="name" value="{{name}}">
-        <input type="hidden" name="name" value="{{secondName}}">
-        <input type="hidden" name="email" value="{{email}}">
-        <button type="submit" name="button">Удалить</button>
-      </form>
-    </li>
-    {{else}}
-    <li>Список пуст </li>
-    {{/each}}
-</ul>
+<div aria-labelledby="home-tab" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Создать предподователя</h1>
+    </div>
+  </div>
+  <form class="" action="/register/teacher" method="post">
+    <div class="row">
+      <div class="col-6">
+        <label for="name" class="form-label">Имя предподователя</label>
+        <input type="text" id="name" class="form-control" name="name" placeholder="Имя" required>
+        <label for="firstName" class="form-label">Имя предподователя</label>
+        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Фамилия" required>
+        <label for="secondName" class="form-label">Имя предподователя</label>
+        <input type="text" id="secondName" name="secondName" class="form-control" placeholder="Отчество" required>
+      </div>
+      <div class="col-6">
+        <label for="email" class="form-label">Электронный адрес</label>
+        <input type="email" id="email" class="form-control" name="email" placeholder="Email" required>
+        <label for="phone" class="form-label">Номер телефона</label>
+        <input type="tel" id="phone" class="form-control" name="phone" placeholder="+7(xxx)-xx-xx" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="submit" name="button" class="btn btn-primary">Создать</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <h2>Список предподователей</h2>
+  <ul>
+      {{#each teachers}}
+      <li>
+        {{name}}
+        {{firstName}}
+        {{secondName}}
+        {{email}}
+        {{phone}}
+        <form class="" action="/register/teacher/delete" method="post">
+          <input type="hidden" name="id" value="{{_id}}">
+          <input type="hidden" name="name" value="{{name}}">
+          <input type="hidden" name="name" value="{{secondName}}">
+          <input type="hidden" name="email" value="{{email}}">
+          <button type="submit" name="button" class="btn btn-outline-danger">Удалить</button>
+        </form>
+      </li>
+      {{else}}
+      <li>Список пуст </li>
+      {{/each}}
+  </ul>
+</div>
+<script type="text/javascript">
+  let register = false;
+  let register_student = false;
+  let register_teacher = true;
+  let register_group = false;
+</script>

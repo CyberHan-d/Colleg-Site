@@ -1,6 +1,14 @@
-<ul>
-  <li><a href="/register">Общий список</a></li>
-  <li><a href="/register/student">Создать студента</a></li>
-  <li><a href="/register/teacher">Создать учителя</a></li>
-  <li><a href="/register/group">Создать группу</a></li>
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link" href="/register">Общий список</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {{#if title.registerStudent}}active{{/if}}" href="/register/student">Создать студента</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  href="/register/teacher">Создать учителя</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {{#if register_group}}active{{/if}}" href="/register/group">Создать группу</a>
+  </li>
 </ul>
