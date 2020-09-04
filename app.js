@@ -16,6 +16,7 @@ const greeting 			= require("./greeting");
 // Student
 // Group
 // Teacher
+// GroupStudent
 
 // создаем сервер
 const app = express();
@@ -148,7 +149,6 @@ app.route("/register/group")
 			const groups = new Group({
 				name: req.body.name,
 				code: req.body.code,
-				group: req.body.group,
 			});
 
 			await groups.save();
@@ -215,6 +215,44 @@ app.post("/register/student/delete", async function(req, res) {
 	console.log("Пользователь удален");
 	res.redirect("/register/student");
 });
+
+app.route("/register/student-group")
+	.get(async function(reg, res) {
+		const students = await Student.find().lean();
+		const groups = await GroupStudent.find().lean();
+
+		res.render("register-student-group", {
+			title: "Создание группы",
+			students,
+			groups
+		});
+
+		res.status(200);
+		console.log("Page register/student load!");
+	})
+	.post(async function(req, res) {
+		try {
+			const group = new GroupStudent({
+				code: req.body.code,
+				students: req.body.students
+			});
+
+			await group.save();
+			res.status(200);
+			console.log("Группа создана");
+			res.redirect("/register/student-group");
+		} catch(err) {
+			console.log("Не удалось отправить запрос");
+			console.log(err);
+		}
+	});
+
+	app.post("/register/student-group/delete", async function(req, res) {
+		await GroupStudent.findByIdAndDelete(req.body.id);
+		console.log("Группа удалена");
+		res.redirect("/register/student-group");
+	});
+	
 
 	app.route("/profile(.html)?")
 		.get(function(req, res) {

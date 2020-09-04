@@ -2,7 +2,7 @@
 <div aria-labelledby="home-tab" class="container">
   <div class="row">
     <div class="col">
-      <h1>Создать предподователя</h1>
+      <h1>Зарегестрируйте предподователя</h1>
     </div>
   </div>
   <form class="" action="/register/teacher" method="post">
@@ -31,30 +31,41 @@
 </div>
 <div class="container">
   <h2>Список предподователей</h2>
-  <ul>
+  {{#if teachers}}
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Имя</th>
+          <th scope="col">Фамилия</th>
+          <th scope="col">Отчество</th>
+          <th scope="col">Email</th>
+          <th scope="col">Телефон</th>
+        </tr>
+      </thead>
+      <tbody>
       {{#each teachers}}
-      <li>
-        {{name}}
-        {{firstName}}
-        {{secondName}}
-        {{email}}
-        {{phone}}
-        <form class="" action="/register/teacher/delete" method="post">
-          <input type="hidden" name="id" value="{{_id}}">
-          <input type="hidden" name="name" value="{{name}}">
-          <input type="hidden" name="name" value="{{secondName}}">
-          <input type="hidden" name="email" value="{{email}}">
-          <button type="submit" name="button" class="btn btn-outline-danger">Удалить</button>
-        </form>
-      </li>
-      {{else}}
-      <li>Список пуст </li>
+        <tr>
+          <td>{{name}}</td>
+          <td>{{firstName}}</td>
+          <td>{{secondName}}</td>
+          <td>{{email}}</td>
+          <td>{{phone}}</td>
+          <td>
+            <form class="" action="/register/teacher/delete" method="post">
+              <input type="hidden" name="id" value="{{_id}}">
+              <input type="hidden" name="name" value="{{name}}">
+              <input type="hidden" name="name" value="{{secondName}}">
+              <input type="hidden" name="email" value="{{email}}">
+              <button type="submit" name="button" class="btn btn-outline-danger">Удалить</button>
+            </form>
+          </td>
+        </tr>
       {{/each}}
-  </ul>
+      </tbody>
+    </table>
+  </div>
+  {{else}}
+  <p>Вы пока ничего не добавили</p>
+  {{/if}}
 </div>
-<script type="text/javascript">
-  let register = false;
-  let register_student = false;
-  let register_teacher = true;
-  let register_group = false;
-</script>

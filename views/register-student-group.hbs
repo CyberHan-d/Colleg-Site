@@ -1,0 +1,114 @@
+{{> breadcrumbs-register}}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Создайте группу</h1>
+    </div>
+</div>
+<div class="container">
+    <form action="/register/student-group" method="POST">
+        <div class="row">
+            <div class="col-6">
+                <label for="groupName" class="form-label">Название группы</label>
+                <input type="text" id="groupName" class="form-control" placeholder="Например: ОИС-117" name="code" required>
+                <button class="btn btn-primary" type="submit">
+                    Создать
+                </button>
+            </div>
+            <div class="col-6">
+                <h2>Создание группы</h2>
+                <p>Написать подсказку</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Выберите студентов</h2>
+                {{#if students}}
+                <div class="table-responsive">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Выберите</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Отчество</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Направление</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                        {{#each students}}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" value="{{name}} {{firstName}} {{secondName}} {{email}} {{group}}" name="students" >
+                                </td>
+                                <td>
+                                    {{name}}
+                                </td>
+                                <td>
+                                    {{firstName}}
+                                </td>
+                                <td>
+                                    {{secondName}}
+                                </td>
+                                <td>
+                                    {{email}}
+                                </td>
+                                <td>
+                                    {{group}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p>Вы пока ничего не добавили</p>
+                {{/if}}
+            </div>
+        </div>
+    </form>
+    {{#each groups}}
+    <div class="row">
+        <div class="col-10">
+            <div class="accordion" id="accordion">
+                <div class="card">
+                    <div class="card-header" id="heading-{{code}}">
+                        <h1>{{code}}</h1>
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{code}}" aria-expanded="false" aria-controls="{{_id}}">
+                            Показать группу
+                        </button>
+                        
+                    </div>
+
+                    <div id="{{code}}" class="collapse" aria-labelledby="heading-{{code}}" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul>
+                                <li>{{students}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div>
+                <form class="" action="/register/student-group/delete" method="post">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-outline-danger" name="button">Удалить</button>
+            </form>
+            <form class="" action="" method="post">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-outline-success mx-auto" name="button">Изменить</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<style>
+    .btn-group-vertical button{
+        text-align: center;
+    }
+</style>

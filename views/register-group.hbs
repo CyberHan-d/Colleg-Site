@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Создать новую группу</h1>
+      <h1>Создайте новую группу</h1>
     </div>
   </div>
   <form class="" action="/register/group" method="post">
@@ -12,8 +12,6 @@
         <input type="text" id="name" class="form-control" name="name" placeholder="Название группы" required>
         <label for="code">Код группы</label>
         <input type="number" id="code" class="form-control" name="code" placeholder="Код группы" required>
-        <label for="group">Номер группы</label>
-        <input type="number" id="group"class="form-control" name="group" placeholder="Номер группы" required>
         <button type="submit" class="btn btn-primary" name="button">Создать</button>
       </div>
     </div>
@@ -21,27 +19,36 @@
 </div>
 <div class="container">
   <h2>Список групп</h2>
-  <table class="table">
-    {{#each groups}}
-    <tr>
-      <td>
-        {{name}}
-      </td>
-      <td>
-        {{code}}
-      </td>
-      <td>
-        {{group}}
-      </td>
-      <td>
-        <form class="" action="/register/group/delete" method="post">
-          <input type="hidden" name="id" value="{{_id}}">
-          <button type="submit" class="btn btn-outline-danger" name="button">Удалить</button>
-        </form>
-      </td>
-    </tr>
+  {{#if groups}}
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Направление</th>
+          <th scope="col">Код</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each groups}}
+        <tr>
+          <td>
+            {{name}}
+          </td>
+          <td>
+            {{code}}
+          </td>
+          <td>
+            <form class="" action="/register/group/delete" method="post">
+              <input type="hidden" name="id" value="{{_id}}">
+              <button type="submit" class="btn btn-outline-danger" name="button">Удалить</button>
+            </form>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
   {{else}}
-  </table>
   <p>Вы пока не добавили ничего</p>
-  {{/each}}
+  {{/if}}
 </div>

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Зарегестрировать нового пользователя</h1>
+      <h1>Зарегестрируйте студента</h1>
     </div>
   </div>
   <form action="/register/student" method="POST">
@@ -37,41 +37,50 @@
 </div>
 <div class="container">
   <h2>Пользователи</h2>
-  <table class="table table-responsive">
-  {{#each students}}
-    <tr>
-      <td>
-        {{name}}
-      </td>
-      <td>
-        {{firstName}}
-      </td>
-      <td>
-        {{secondName}}
-      </td>
-      <td>
-        {{email}}
-      </td>
-      <td>
-        {{group}}
-      </td>
-      <td>
-        <form class="" action="/register/student/delete" method="post">
-          <input type="hidden" name="id" value="{{_id}}">
-          <input type="hidden" name="name" value="{{name}}">
-          <input type="hidden" name="email" value="{{email}}">
-          <button type="submit" class="btn btn-outline-danger" name="button">Удалить</button>
-        </form>
-      </td>
-    </tr>
+  {{#if students}}
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Имя</th>
+          <th scope="col">Фамилия</th>
+          <th scope="col">Отчество</th>
+          <th scope="col">Email</th>
+          <th scope="col">Направление</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each students}}
+        <tr>
+          <td>
+            {{name}}
+          </td>
+          <td>
+            {{firstName}}
+          </td>
+          <td>
+            {{secondName}}
+          </td>
+          <td>
+            {{email}}
+          </td>
+          <td>
+            {{group}}
+          </td>
+          <td>
+            <form class="" action="/register/student/delete" method="post">
+              <input type="hidden" name="id" value="{{_id}}">
+              <input type="hidden" name="name" value="{{name}}">
+              <input type="hidden" name="email" value="{{email}}">
+              <button type="submit" class="btn btn-outline-danger" name="button">Удалить</button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
   {{else}}
-  </table>
   <p>Вы пока ничего не добавили</p>
-  {{/each}}
+  {{/if}}
 </div>
-<script type="text/javascript">
-  let register = false;
-  let register_student = true;
-  let register_teacher = false;
-  let register_group = false;
-</script>

@@ -67,10 +67,6 @@ const groupSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	group: {
-		type: Number,
-		required: true
-	}
 });
 
 const teacherSchema = new Schema({
@@ -102,9 +98,18 @@ const teacherSchema = new Schema({
 	},
 });
 
+const groupStudentSchema = new Schema({
+	students:[],
+	code: {
+		type: String,
+		required: true
+	},
+});
+
 global.Student = mongo.model("students", studentSchema);
 global.Group = mongo.model("groups", groupSchema);
 global.Teacher = mongo.model("teachers", teacherSchema);
+global.GroupStudent = mongo.model("student_groups", groupStudentSchema);
 
 //mail
 
