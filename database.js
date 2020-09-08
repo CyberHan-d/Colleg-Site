@@ -44,6 +44,9 @@ const studentSchema = new Schema({
 		type: String,
 		required: true
 	},
+	groupNumber: {
+		type: String
+	},
 	email: {
 		type: String,
 		required: true
@@ -100,6 +103,10 @@ const teacherSchema = new Schema({
 
 const groupStudentSchema = new Schema({
 	students:[],
+	group: {
+		type: String,
+		required: true
+	},
 	code: {
 		type: String,
 		required: true

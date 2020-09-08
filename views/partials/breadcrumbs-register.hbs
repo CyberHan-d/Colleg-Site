@@ -1,17 +1,46 @@
-<ul class="nav nav-pills nav-fill">
-  <li class="nav-item">
-    <a class="nav-link" href="/register">Общий список</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link {{#if title.registerStudent}}active{{/if}}" href="/register/student">Создать студента</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link"  href="/register/teacher">Создать учителя</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link {{#if register_group}}active{{/if}}" href="/register/group">Создать направление</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link {{#if register_group}}active{{/if}}" href="/register/student-group">Создать группу</a>
-  </li>
-</ul>
+
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Общий список</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if title.registerStudent}}active{{/if}}" href="/register/student">Создать студента</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  href="/register/teacher">Создать учителя</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if register_group}}active{{/if}}" href="/register/group">Создать направление</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if register_group}}active{{/if}}" href="/register/student-group">Создать группу</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Общий список</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if title.registerStudent}}active{{/if}}" href="/register/student">Создать студента</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  href="/register/teacher">Создать учителя</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if register_group}}active{{/if}}" href="/register/group">Создать направление</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{#if register_group}}active{{/if}}" href="/register/student-group">Создать группу</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -220,11 +220,13 @@ app.route("/register/student-group")
 	.get(async function(reg, res) {
 		const students = await Student.find().lean();
 		const groups = await GroupStudent.find().lean();
+		const group = await Group.find().lean();
 
 		res.render("register-student-group", {
 			title: "Создание группы",
 			students,
-			groups
+			groups,
+			group
 		});
 
 		res.status(200);
@@ -234,7 +236,8 @@ app.route("/register/student-group")
 		try {
 			const group = new GroupStudent({
 				code: req.body.code,
-				students: req.body.students
+				students: req.body.students,
+				group: req.body.group
 			});
 
 			await group.save();
@@ -252,7 +255,7 @@ app.route("/register/student-group")
 		console.log("Группа удалена");
 		res.redirect("/register/student-group");
 	});
-	
+
 
 	app.route("/profile(.html)?")
 		.get(function(req, res) {

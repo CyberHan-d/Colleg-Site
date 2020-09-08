@@ -11,6 +11,13 @@
             <div class="col-6">
                 <label for="groupName" class="form-label">Название группы</label>
                 <input type="text" id="groupName" class="form-control" placeholder="Например: ОИС-117" name="code" required>
+                <select class="form-select" name="group" id="group" required>
+                  {{#each group}}
+                  <option>{{name}} {{code}} {{group}}</option>
+                  {{else}}
+                  <option disabled>Создайте группы</option>
+                  {{/each}}
+                </select>
                 <button class="btn btn-primary" type="submit">
                     Создать
                 </button>
@@ -40,7 +47,7 @@
                         {{#each students}}
                             <tr>
                                 <td>
-                                    <input type="checkbox" value="{{name}} {{firstName}} {{secondName}} {{email}} {{group}}" name="students" >
+                                    <input type="checkbox" value="{{name}} {{firstName}} {{secondName}} {{email}}" name="students" >
                                 </td>
                                 <td>
                                     {{name}}
@@ -75,16 +82,19 @@
                 <div class="card">
                     <div class="card-header" id="heading-{{code}}">
                         <h1>{{code}}</h1>
+                        <h3>{{group}}</h3>
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{code}}" aria-expanded="false" aria-controls="{{_id}}">
                             Показать группу
                         </button>
-                        
+
                     </div>
 
                     <div id="{{code}}" class="collapse" aria-labelledby="heading-{{code}}" data-parent="#accordion">
                         <div class="card-body">
                             <ul>
-                                <li>{{students}}</li>
+                            {{#each students}}
+                                <li>{{this}}</li>
+                            {{/each}}
                             </ul>
                         </div>
                     </div>
@@ -106,9 +116,3 @@
     </div>
     {{/each}}
 </div>
-
-<style>
-    .btn-group-vertical button{
-        text-align: center;
-    }
-</style>
