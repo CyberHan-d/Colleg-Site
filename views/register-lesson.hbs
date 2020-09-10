@@ -1,0 +1,84 @@
+{{> breadcrumbs-register}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Создайте предмет</h1>
+        </div>
+    </div>
+    <form action="/register/lesson" method="POST">
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="name__lesson">Название предмета</label>
+                <input class="form-control" type="text" name="name" id="name__lesson" placeholder="Например: История" required>
+                <label class="form-label" for="cabinet__lesson">Номер аудитории</label>
+                <input class="form-control" type="text" name="cabinet" id="cabinet__lesson" placeholder="Например: Кабинет 201" required>
+                <button type="submit" class="btn btn-primary">
+                    Создать
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Выберите предподавателя</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col">Выбрать</th>
+                                <th class="col">Фамилия</th>
+                                <th class="col">Имя</th>
+                                <th class="col">Отчество</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each teachers}}
+                            <tr>
+                                <td>
+                                    <input type="radio" value="{{firstName}} {{name}} {{secondName}}" name="teacher">
+                                </td>
+                                <td>
+                                    {{firstName}}
+                                </td>
+                                <td>
+                                    {{name}}
+                                </td>
+                                <td>
+                                    {{secondName}}
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-10">
+            <div class="accordion" id="accordion">
+                <div class="card">
+                    <div class="card-header" id="heading">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#show__lesson" aria-expanded="false" aria-controls="collapseOne">
+                            Показать предметы
+                        </button>
+
+                    </div>
+                    <div id="show__lesson" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul>
+                            {{#each lessons}}
+                                <h2> {{name}} </h2>
+                                <p>
+                                    {{teacher}}
+                                </p>
+                                <p>
+                                    {{cabinet}}
+                                </p>
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

@@ -17,6 +17,7 @@ const greeting 			= require("./greeting");
 // Group
 // Teacher
 // GroupStudent
+// Lesson
 
 // создаем сервер
 const app = express();
@@ -86,6 +87,8 @@ app.route("/register")
 		console.log("Page register load!");
 	});
 
+//route register teacher----------------------------------------------------------------------\
+
 app.route("/register/teacher")
 	.get(async function(req, res) {
 		const teachers = await Teacher.find().lean();
@@ -132,6 +135,8 @@ app.route("/register/teacher")
 		res.redirect("/register/teacher");
 	});
 
+// route register group-----------------------------------------------------------------\
+
 app.route("/register/group")
 	.get(async function(req, res) {
 		const groups = await Group.find().lean();
@@ -167,6 +172,8 @@ app.route("/register/group")
 		res.redirect("/register/group");
 	});
 
+
+// route register student-----------------------------------------------------------\
 
 app.route("/register/student")
 	.get(async function(reg, res) {
@@ -216,6 +223,8 @@ app.post("/register/student/delete", async function(req, res) {
 	res.redirect("/register/student");
 });
 
+//route student group--------------------------------------------------------\
+
 app.route("/register/student-group")
 	.get(async function(reg, res) {
 		const students = await Student.find().lean();
@@ -257,6 +266,40 @@ app.route("/register/student-group")
 	});
 
 
+// route register lesson-------------------------------------------------------------------\
+
+	app.route("/register/lesson")
+	.get(async function(reg, res) {
+		const teachers = await Teacher.find().lean();
+		const lessons = await Lesson.find().lean();
+
+		res.render("register-lesson", {
+			title: "Создание урока",
+			teachers,
+			lessons
+		});
+
+		res.status(200);
+		console.log("Page register/lesson load!");
+	})
+	.post(async function(req, res) {
+		try {
+			const lesson = new Lesson({
+				name: req.body.name,
+				teacher: req.body.teacher,
+				cabinet: req.body.cabinet
+			});
+
+			await lesson.save();
+			res.status(200);
+			console.log("Урок создан");
+			res.redirect("/register/lesson");
+		} catch(err) {
+			console.log("Не удалось отправить запрос");
+			console.log(err);
+		}
+	});
+
 	app.route("/profile(.html)?")
 		.get(function(req, res) {
 			res.render("profile", {
@@ -287,6 +330,6 @@ app.use(function(reg, res) {
 	});
 
 app.listen(process.env.PORT);
-console.log("Стартанули сервер. Версия 0.9.0-dev");
+console.log("Стартанули сервер. Версия " + process.env.VERSION);
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));

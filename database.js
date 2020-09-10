@@ -113,11 +113,26 @@ const groupStudentSchema = new Schema({
 	},
 });
 
+const lessonSchema = new Schema({
+	name: {
+		type: String,
+		required: true,
+	},
+	teacher: {
+		type: String,
+		required: true
+	},
+	cabinet: {
+		type: String,
+		required: true
+	}
+});
+
 global.Student = mongo.model("students", studentSchema);
 global.Group = mongo.model("groups", groupSchema);
 global.Teacher = mongo.model("teachers", teacherSchema);
 global.GroupStudent = mongo.model("student_groups", groupStudentSchema);
-
+global.Lesson = mongo.model("lesson", lessonSchema);
 //mail
 
 module.exports.sendMailRegisterStudent = function (mailTo, pass, name, login) {
