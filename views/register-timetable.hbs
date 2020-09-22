@@ -1,0 +1,22 @@
+{{> breadcrumbs-register}}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Создать расписание</h1>
+    </div>
+  </div>
+  <form class="" action="" method="post">
+    <div class="row">
+      <div class="col-8">
+        {{#each lessons}}
+        <ul>
+            <li>{{name}}</li>
+            <li>{{teacher}}</li>
+            <li>{{cabinet}}</li>
+        </ul>
+        {{/each}}
+      </div>
+    </div>
+  </form>
+</div>

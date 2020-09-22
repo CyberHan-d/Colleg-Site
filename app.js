@@ -18,6 +18,7 @@ const greeting 			= require("./greeting");
 // Teacher
 // GroupStudent
 // Lesson
+// TimeTable
 
 // создаем сервер
 const app = express();
@@ -299,6 +300,46 @@ app.route("/register/student-group")
 			console.log(err);
 		}
 	});
+
+// route regitser timetable --------------------------------------------------------------------------------------
+
+app.route("/register/timetable")
+.get(async function(reg, res) {
+	const lessons = await Lesson.find().lean();
+	const groupStudents = await GroupStudent.find().lean();
+	const timeTable = await TimeTable.find().lean();
+
+	res.render("register-timetable", {
+		title: "Создание расписания",
+		groupStudents,
+		lessons,
+		timeTable,
+	});
+
+	res.status(200);
+	console.log("Page register/timetable load!");
+})
+.post(async function(req, res) {
+	try {
+		const timeTable = new TimeTable({
+			monday: req.body.monday,
+			tuesday: req.body.tuesday,
+			wednesday: req.body.wednesday,
+			thursday: req.body.thursday,
+			friday: req.body.friday,
+			saturday: req.body.saturday,
+			group: req.body.group
+		});
+
+		await timetable.save();
+		res.status(200);
+		console.log("Расписание создано!");
+		res.redirect("/register/timatable");
+	} catch(err) {
+		console.log("Не удалось отправить запрос");
+		console.log(err);
+	}
+});
 
 	app.route("/profile(.html)?")
 		.get(function(req, res) {

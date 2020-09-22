@@ -6,6 +6,8 @@ const crash 						= require("./error");
 
 const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/kgk";
 
+mongo.set('debug', true); // Дебажим ебаный код 16.09.2020
+
 async function start(url) {
 	try {
 		await mongo.connect(
@@ -128,11 +130,134 @@ const lessonSchema = new Schema({
 	}
 });
 
+// Написал эту схему, вроде работает 16.09.2020
+const timeTableSchema = new Schema({
+	monday: [{
+		lessons: [{
+			firstLesson: {
+				type: String
+			},
+			secondLesson: {
+				type: String
+			},
+			threeLesson: {
+				type: String
+			},
+			fourLesson: {
+				type: String
+			},
+			fiveLesson: {
+				type: String
+			},
+		}]
+	}],
+	tuesday: [{
+		lessons: [{
+			firstLesson: {
+				type: String
+			},
+			secondLesson: {
+				type: String
+			},
+			threeLesson: {
+				type: String
+			},
+			fourLesson: {
+				type: String
+			},
+			fiveLesson: {
+				type: String
+			},
+		}]
+	}],
+	wednesday: [{
+		lessons: [{
+			firstLesson: {
+				type: String
+			},
+			secondLesson: {
+				type: String
+			},
+			threeLesson: {
+				type: String
+			},
+			fourLesson: {
+				type: String
+			},
+			fiveLesson: {
+				type: String
+			},
+		}]
+	}],
+	thursday: [{
+		lessons: [{
+			firstLesson: {
+				type: String
+			},
+			secondLesson: {
+				type: String
+			},
+			threeLesson: {
+				type: String
+			},
+			fourLesson: {
+				type: String
+			},
+			fiveLesson: {
+				type: String
+			},
+		}]
+	}],
+	friday: [{
+		lessons: [{
+			firstLesson: {
+				type: String
+			},
+			secondLesson: {
+				type: String
+			},
+			threeLesson: {
+				type: String
+			},
+			fourLesson: {
+				type: String
+			},
+			fiveLesson: {
+				type: String
+			},
+		}]
+	}],
+	saturday: [{
+		lessons: [{
+			firstLesson: {
+				type: String
+			},
+			secondLesson: {
+				type: String
+			},
+			threeLesson: {
+				type: String
+			},
+			fourLesson: {
+				type: String
+			},
+			fiveLesson: {
+				type: String
+			},
+		}]
+	}],
+	group: {
+		type: String,
+		required: true
+	},
+});
+
 global.Student = mongo.model("students", studentSchema);
 global.Group = mongo.model("groups", groupSchema);
 global.Teacher = mongo.model("teachers", teacherSchema);
 global.GroupStudent = mongo.model("student_groups", groupStudentSchema);
 global.Lesson = mongo.model("lesson", lessonSchema);
+global.TimeTable = mongo.model("timetable", timeTableSchema);
 //mail
 
 module.exports.sendMailRegisterStudent = function (mailTo, pass, name, login) {
