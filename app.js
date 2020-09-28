@@ -323,19 +323,49 @@ app.route("/register/timetable(.html)?")
 .post(async function(req, res) {
 	try {
 		const timeTable = new TimeTable({
-			monday: req.body.monday,
-			tuesday: req.body.tuesday,
-			wednesday: req.body.wednesday,
-			thursday: req.body.thursday,
-			friday: req.body.friday,
-			saturday: req.body.saturday,
+			monday:[{
+				lesson_1: req.body.lesson_1_Monday,
+				lesson_2: req.body.lesson_2_Monday,
+				lesson_3: req.body.lesson_3_Monday,
+				lesson_4: req.body.lesson_4_Monday,
+			}],
+			tuesday:[{
+				lesson_1: req.body.lesson_1_Tuesday,
+				lesson_2: req.body.lesson_2_Tuesday,
+				lesson_3: req.body.lesson_3_Tuesday,
+				lesson_4: req.body.lesson_4_Tuesday,
+			}],
+			wednesday:[{
+				lesson_1: req.body.lesson_1_Wednesday,
+				lesson_2: req.body.lesson_2_Wednesday,
+				lesson_3: req.body.lesson_3_Wednesday,
+				lesson_4: req.body.lesson_4_Wednesday,
+			}],
+			thursday:[{
+				lesson_1: req.body.lesson_1_Thursday,
+				lesson_2: req.body.lesson_2_Thursday,
+				lesson_3: req.body.lesson_3_Thursday,
+				lesson_4: req.body.lesson_4_Thursday,
+			}],
+			friday:[{
+				lesson_1: req.body.lesson_1_Friday,
+				lesson_2: req.body.lesson_2_Friday,
+				lesson_3: req.body.lesson_3_Friday,
+				lesson_4: req.body.lesson_4_Friday,
+			}],
+			saturday:[{
+				lesson_1: req.body.lesson_1_Saturday,
+				lesson_2: req.body.lesson_2_Saturday,
+				lesson_3: req.body.lesson_3_Saturday,
+				lesson_4: req.body.lesson_4_Saturday,
+			}],
 			group: req.body.group
 		});
 
-		await timetable.save();
+		await timeTable.save();
 		res.status(200);
 		console.log("Расписание создано!");
-		res.redirect("/register/timatable");
+		res.redirect("/register/timetable");
 	} catch(err) {
 		console.log("Не удалось отправить запрос");
 		console.log(err);

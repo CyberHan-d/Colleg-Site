@@ -136,120 +136,162 @@ const lessonSchema = new Schema({
 });
 
 // Написал эту схему, вроде работает 16.09.2020
+// const timeTableSchema = new Schema({
+// 	monday: [{
+// }],
+// 	tuesday: [{
+// 		lessons: [{
+// 			firstLesson: {
+// 				type: String
+// 			},
+// 			secondLesson: {
+// 				type: String
+// 			},
+// 			threeLesson: {
+// 				type: String
+// 			},
+// 			fourLesson: {
+// 				type: String
+// 			},
+// 			fiveLesson: {
+// 				type: String
+// 			},
+// 		}]
+// 	}],
+// 	wednesday: [{
+// 		lessons: [{
+// 			firstLesson: {
+// 				type: String
+// 			},
+// 			secondLesson: {
+// 				type: String
+// 			},
+// 			threeLesson: {
+// 				type: String
+// 			},
+// 			fourLesson: {
+// 				type: String
+// 			},
+// 			fiveLesson: {
+// 				type: String
+// 			},
+// 		}]
+// 	}],
+// 	thursday: [{
+// 		lessons: [{
+// 			firstLesson: {
+// 				type: String
+// 			},
+// 			secondLesson: {
+// 				type: String
+// 			},
+// 			threeLesson: {
+// 				type: String
+// 			},
+// 			fourLesson: {
+// 				type: String
+// 			},
+// 			fiveLesson: {
+// 				type: String
+// 			},
+// 		}]
+// 	}],
+// 	friday: [{
+// 		lessons: [{
+// 			firstLesson: {
+// 				type: String
+// 			},
+// 			secondLesson: {
+// 				type: String
+// 			},
+// 			threeLesson: {
+// 				type: String
+// 			},
+// 			fourLesson: {
+// 				type: String
+// 			},
+// 			fiveLesson: {
+// 				type: String
+// 			},
+// 		}]
+// 	}],
+// 	saturday: [{
+// 		lessons: [{
+// 			firstLesson: {
+// 				type: String
+// 			},
+// 			secondLesson: {
+// 				type: String
+// 			},
+// 			threeLesson: {
+// 				type: String
+// 			},
+// 			fourLesson: {
+// 				type: String
+// 			},
+// 			fiveLesson: {
+// 				type: String
+// 			},
+// 		}]
+// 	}],
+// 	group: {
+// 		type: String,
+// 		required: true
+// 	},
+// });
+
+//  Переписал это говнище 28.09. Я БЛЯТЬ НЕНАВИЖУ БАЗЫ ДАННЫХ
+// const timeTableSchema = new Schema({
+// 	monday: [],
+// 	tuesday: [],
+// 	wednesday: [],
+// 	thursday: [],
+// 	friday: [],
+// 	saturday: [],
+// 	group: {
+// 		type: String,
+// 		required: true
+// 	},
+// });
+// Я дебил
+// Я СДЕЛАЛ ЭТО!! время 5.00...
+// Пояснения, массив типа Monday и т.д. проходят ввиде обьекта, состоящего из данных типа стринги.
 const timeTableSchema = new Schema({
 	monday: [{
-		lessons: [{
-			firstLesson: {
-				type: String
-			},
-			secondLesson: {
-				type: String
-			},
-			threeLesson: {
-				type: String
-			},
-			fourLesson: {
-				type: String
-			},
-			fiveLesson: {
-				type: String
-			},
-		}]
+		lesson_1: String,
+		lesson_2: String,
+		lesson_3: String,
+		lesson_4: String
 	}],
 	tuesday: [{
-		lessons: [{
-			firstLesson: {
-				type: String
-			},
-			secondLesson: {
-				type: String
-			},
-			threeLesson: {
-				type: String
-			},
-			fourLesson: {
-				type: String
-			},
-			fiveLesson: {
-				type: String
-			},
-		}]
+		lesson_1: String,
+		lesson_2: String,
+		lesson_3: String,
+		lesson_4: String,
 	}],
 	wednesday: [{
-		lessons: [{
-			firstLesson: {
-				type: String
-			},
-			secondLesson: {
-				type: String
-			},
-			threeLesson: {
-				type: String
-			},
-			fourLesson: {
-				type: String
-			},
-			fiveLesson: {
-				type: String
-			},
-		}]
+		lesson_1: String,
+		lesson_2: String,
+		lesson_3: String,
+		lesson_4: String,
 	}],
 	thursday: [{
-		lessons: [{
-			firstLesson: {
-				type: String
-			},
-			secondLesson: {
-				type: String
-			},
-			threeLesson: {
-				type: String
-			},
-			fourLesson: {
-				type: String
-			},
-			fiveLesson: {
-				type: String
-			},
-		}]
+		lesson_1: String,
+		lesson_2: String,
+		lesson_3: String,
+		lesson_4: String,
 	}],
 	friday: [{
-		lessons: [{
-			firstLesson: {
-				type: String
-			},
-			secondLesson: {
-				type: String
-			},
-			threeLesson: {
-				type: String
-			},
-			fourLesson: {
-				type: String
-			},
-			fiveLesson: {
-				type: String
-			},
-		}]
+		lesson_1: String,
+		lesson_2: String,
+		lesson_3: String,
+		lesson_4: String,
 	}],
 	saturday: [{
-		lessons: [{
-			firstLesson: {
-				type: String
-			},
-			secondLesson: {
-				type: String
-			},
-			threeLesson: {
-				type: String
-			},
-			fourLesson: {
-				type: String
-			},
-			fiveLesson: {
-				type: String
-			},
-		}]
+		lesson_1: String,
+		lesson_2: String,
+		lesson_3: String,
+		lesson_4: String,
 	}],
 	group: {
 		type: String,

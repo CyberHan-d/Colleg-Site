@@ -1,22 +1,327 @@
 {{> breadcrumbs-register}}
 
+<<<<<<< Updated upstream
 <div class="container admin__layout">
+=======
+<div class="container-fluid">
+>>>>>>> Stashed changes
   <div class="row">
     <div class="col">
       <h1>Создать расписание</h1>
     </div>
   </div>
+<<<<<<< Updated upstream
   <form class="top__form" action="" method="post">
+=======
+  <form class="form" action="/register/timetable" method="post">
+>>>>>>> Stashed changes
     <div class="row">
-      <div class="col-8">
-        {{#each lessons}}
-        <ul>
-            <li>{{name}}</li>
-            <li>{{teacher}}</li>
-            <li>{{cabinet}}</li>
-        </ul>
-        {{/each}}
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+        <h2>Выберите группу</h2>
+        {{#if groupStudents}}
+          {{#each groupStudents}}
+          <div class="block">
+            <input type="radio" name="group" value="{{group}}" required>
+            <p>{{group}}</p>
+          </div>
+          {{/each}}
+        {{else}}
+        <a href="/register/student-group">Создайте группу</a>
+        {{/if}}
       </div>
+      {{!-- Эту дрочильню нужно получше адаптировать/расположить --}}
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="row">
+          <div class="col-2">
+          <h2>Понедельник</h2>
+          <label for="first__lessons">1 пара</label>
+            <select class="form-select" name="lesson_1_Monday" id="first_lessons">
+              <option selected>Пар нет</option>
+              {{#each lessons}}
+              <option>{{name}} {{teacher}}</option>
+              {{else}}
+              <option disabled>Создайте группы</option>
+              {{/each}}
+            </select>
+            <label for="first__lessons">2 пара</label>
+              <select class="form-select" name="lesson_2_Monday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">3 пара</label>
+              <select class="form-select" name="lesson_3_Monday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">4 пара</label>
+              <select class="form-select" name="lesson_4_Monday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+          </div>
+          <div class="col-2">
+            <h2>Вторник</h2>
+            <label for="first__lessons">1 пара</label>
+              <select class="form-select" name="lesson_1_Tuesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">2 пара</label>
+              <select class="form-select" name="lesson_2_Tuesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">3 пара</label>
+              <select class="form-select" name="lesson_3_Tuesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">4 пара</label>
+              <select class="form-select" name="lesson_4_Tuesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+          </div>
+          <div class="col-2">
+            <h2>Среда</h2>
+            <label for="first__lessons">1 пара</label>
+              <select class="form-select" name="lesson_1_Wednesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">2 пара</label>
+              <select class="form-select" name="lesson_2_Wednesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">3 пара</label>
+              <select class="form-select" name="lesson_3_Wednesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">4 пара</label>
+              <select class="form-select" name="lesson_4_Wednesday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>    
+          </div>
+          <div class="col-2">
+            <h2>Четверг</h2>
+            <label for="first__lessons">1 пара</label>
+              <select class="form-select" name="lesson_1_Thursday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>  
+            <label for="first__lessons">2 пара</label>
+              <select class="form-select" name="lesson_2_Thursday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">3 пара</label>
+              <select class="form-select" name="lesson_3_Thursday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">4 пара</label>
+              <select class="form-select" name="lesson_4_Thursday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>  
+          </div>
+          <div class="col-2">
+            <h2>Пятница</h2>
+            <label for="first__lessons">1 пара</label>
+              <select class="form-select" name="lesson_1_Friday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">2 пара</label>
+              <select class="form-select" name="lesson_2_Friday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">3 пара</label>
+              <select class="form-select" name="lesson_3_Friday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">4 пара</label>
+              <select class="form-select" name="lesson_4_Friday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+          </div>
+          <div class="col-2">
+            <h2>Суббота</h2>
+            <label for="first__lessons">1 пара</label>
+              <select class="form-select" name="lesson_1_Saturday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">2 пара</label>
+              <select class="form-select" name="lesson_2_Saturday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">3 пара</label>
+              <select class="form-select" name="lesson_3_Saturday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+            <label for="first__lessons">4 пара</label>
+              <select class="form-select" name="lesson_4_Saturday" id="first_lessons">
+                <option selected>Пар нет</option>
+                {{#each lessons}}
+                <option>{{name}} {{teacher}}</option>
+                {{else}}
+                <option disabled>Создайте группы</option>
+                {{/each}}
+              </select>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Ебись в рот тот человек, кто придумал hbs --}}
+      {{!-- <div class="col-4">
+        <h2>Выберите предмет</h2>
+        {{#if lessons}}
+          {{#each lessons}}
+          <input type="checkbox" name="">
+          <ul>
+              <li>{{name}}</li>
+              <li>{{teacher}}</li>
+              <li>{{cabinet}}</li>
+          </ul>
+          {{/each}}
+        {{else}}
+          <a href="/register/lesson">Создайте уроки</a>
+        {{/if}}
+      </div> --}}
+      <button type="submit">Создать расписание</button>
     </div>
   </form>
+  {{!-- Это fuck блок нужно расположить как master slaves --}}
+  <div class="row">
+    <div class="col">
+      {{#if timeTable}}
+        {{#each timeTable}}
+        <div class="col-2">
+          {{#if monday}}
+            {{#each monday}}
+              <h2>Понедельник</h2>
+              <p>Первая пара</p>
+              {{#if lessons.firstLesson}}
+                <ul>
+                  <li>{{firstLesson}}</li>
+                </ul>
+              {{else}}
+                <p>Отдыхаем</p>
+              {{/if}}
+              <p>Вторая пара</p>
+              {{#if lessons.secondtLesson}}
+                <ul>
+                  <li>{{secondLesson}}</li>
+                </ul>
+              {{else}}
+                <p>Отдыхаем</p>
+              {{/if}}
+            {{/each}}
+          {{else}}
+            <p>Занятий нет</p>
+          {{/if}}
+        </div>
+        {{/each}}
+      {{else}}
+        <p>Расписание не создано</p>
+      {{/if}}
+    </div>
+  </div>
 </div>
