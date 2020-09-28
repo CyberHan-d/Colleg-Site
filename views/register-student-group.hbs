@@ -1,12 +1,11 @@
 {{> breadcrumbs-register}}
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Создайте группу</h1>
+<div class="container admin__layout">
+    <div class="row">
+        <div class="col">
+            <h1>Создайте группы</h1>
+        </div>
     </div>
-</div>
-<div class="container">
-    <form action="/register/student-group" method="POST">
+    <form class="top__form" action="/register/student-group" method="POST">
         <div class="row">
             <div class="col-6">
                 <label for="groupName" class="form-label">Название группы</label>
@@ -27,7 +26,7 @@
                 <p>Написать подсказку</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row  table__student-group">
             <div class="col">
                 <h2>Выберите студентов</h2>
                 {{#if students}}

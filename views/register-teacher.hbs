@@ -1,25 +1,25 @@
 {{> breadcrumbs-register}}
-<div aria-labelledby="home-tab" class="container">
+<div aria-labelledby="home-tab" class="container admin__layout">
   <div class="row">
     <div class="col">
-      <h1>Зарегестрируйте предподователя</h1>
+      <h1>Зарегистрируйте преподавателя</h1>
     </div>
   </div>
-  <form class="" action="/register/teacher" method="post">
+  <form class="top__form" action="/register/teacher" method="post">
     <div class="row">
       <div class="col-6">
-        <label for="name" class="form-label">Имя предподователя</label>
+        <label for="name" class="form-label">Имя преподавателя</label>
         <input type="text" id="name" class="form-control" name="name" placeholder="Имя" required>
-        <label for="firstName" class="form-label">Имя предподователя</label>
+        <label for="firstName" class="form-label">Имя преподавателя</label>
         <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Фамилия" required>
-        <label for="secondName" class="form-label">Имя предподователя</label>
+        <label for="secondName" class="form-label">Имя преподавателя</label>
         <input type="text" id="secondName" name="secondName" class="form-control" placeholder="Отчество" required>
       </div>
       <div class="col-6">
         <label for="email" class="form-label">Электронный адрес</label>
         <input type="email" id="email" class="form-control" name="email" placeholder="Email" required>
         <label for="phone" class="form-label">Номер телефона</label>
-        <input type="tel" id="phone" class="form-control" name="phone" placeholder="+7(xxx)-xx-xx" required>
+        <input type="tel" id="phone" class="form-control" name="phone" value="+7(___)___-____" required>
       </div>
     </div>
     <div class="row">
@@ -29,8 +29,8 @@
     </div>
   </form>
 </div>
-<div class="container">
-  <h2>Список предподователей</h2>
+<div class="container admin__layout">
+  <h2>Список преподавателей</h2>
   {{#if teachers}}
   <div class="table-responsive">
     <table class="table">

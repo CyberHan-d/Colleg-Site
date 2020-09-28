@@ -71,7 +71,7 @@ app.route("/log-in(.html)?")
 	// 	}
 	// });
 
-app.route("/register")
+app.route("/register(.html)?")
 	.get(async function(req, res) {
 		const students = await Student.find().lean();
 		const groups = await Group.find().lean();
@@ -90,7 +90,7 @@ app.route("/register")
 
 //route register teacher----------------------------------------------------------------------\
 
-app.route("/register/teacher")
+app.route("/register/teacher(.html)?")
 	.get(async function(req, res) {
 		const teachers = await Teacher.find().lean();
 
@@ -138,7 +138,7 @@ app.route("/register/teacher")
 
 // route register group-----------------------------------------------------------------\
 
-app.route("/register/group")
+app.route("/register/group(.html)?")
 	.get(async function(req, res) {
 		const groups = await Group.find().lean();
 
@@ -176,7 +176,7 @@ app.route("/register/group")
 
 // route register student-----------------------------------------------------------\
 
-app.route("/register/student")
+app.route("/register/student(.html)?")
 	.get(async function(reg, res) {
 		const students = await Student.find().lean();
 		const groups = await Group.find().lean();
@@ -202,6 +202,7 @@ app.route("/register/student")
 				secondName: req.body.secondName,
 				email: req.body.email,
 				group: req.body.group,
+				phone: req.body.phone,
 				pass: newPass,
 				login: login,
 			});
@@ -226,7 +227,7 @@ app.post("/register/student/delete", async function(req, res) {
 
 //route student group--------------------------------------------------------\
 
-app.route("/register/student-group")
+app.route("/register/student-group(.html)?")
 	.get(async function(reg, res) {
 		const students = await Student.find().lean();
 		const groups = await GroupStudent.find().lean();
@@ -269,7 +270,7 @@ app.route("/register/student-group")
 
 // route register lesson-------------------------------------------------------------------\
 
-	app.route("/register/lesson")
+	app.route("/register/lesson(.html)?")
 	.get(async function(reg, res) {
 		const teachers = await Teacher.find().lean();
 		const lessons = await Lesson.find().lean();
@@ -303,7 +304,7 @@ app.route("/register/student-group")
 
 // route regitser timetable --------------------------------------------------------------------------------------
 
-app.route("/register/timetable")
+app.route("/register/timetable(.html)?")
 .get(async function(reg, res) {
 	const lessons = await Lesson.find().lean();
 	const groupStudents = await GroupStudent.find().lean();

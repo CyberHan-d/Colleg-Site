@@ -53,6 +53,10 @@ const studentSchema = new Schema({
 		type: String,
 		required: true
 	},
+	phone: {
+		type: String,
+		required: true
+	},
 	pass: {
 		type: String
 	},
@@ -92,7 +96,7 @@ const teacherSchema = new Schema({
 		required: true
 	},
 	phone: {
-		type: Number,
+		type: String,
 		required: true
 	},
 	pass: {
@@ -101,6 +105,7 @@ const teacherSchema = new Schema({
 	login: {
 		type: String
 	},
+	versionKey: false
 });
 
 const groupStudentSchema = new Schema({

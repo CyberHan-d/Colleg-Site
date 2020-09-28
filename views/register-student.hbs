@@ -1,11 +1,11 @@
 {{> breadcrumbs-register}}
-<div class="container">
+<div class="container admin__layout">
   <div class="row">
     <div class="col">
-      <h1>Зарегестрируйте студента</h1>
+      <h1>Зарегистрируйте студента</h1>
     </div>
   </div>
-  <form action="/register/student" method="POST">
+  <form class="top__form" action="/register/student" method="POST">
     <div class="row justify-content-center">
         <div class="col-6">
             <label for="name" class="form-label"> Имя студента </label>
@@ -18,6 +18,8 @@
         <div class="col-6">
           <label for="email" class="form-label">Электронный адрес</label>
           <input type="email" id="email" class="form-control" placeholder="email" name="email" required>
+          <label for="phone" class="form-label">Номер телефона</label>
+          <input type="tel" id="phone" class="form-control" name="phone" value="+7(___)___-____" required>
           <label for="group">Группа</label>
           <select class="form-select" name="group" id="group">
             {{#each groups}}
@@ -46,6 +48,7 @@
           <th scope="col">Фамилия</th>
           <th scope="col">Отчество</th>
           <th scope="col">Email</th>
+          <th scope="col">Телефон</th>
           <th scope="col">Направление</th>
         </tr>
       </thead>
@@ -63,6 +66,9 @@
           </td>
           <td>
             {{email}}
+          </td>
+          <td>
+            {{phone}}
           </td>
           <td>
             {{group}}

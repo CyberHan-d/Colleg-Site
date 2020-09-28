@@ -2,3 +2,69 @@
 h1,h2,h3,p,ul,li,a{
   font-family:'Roboto Mono', Courier, monospace;
 }
+
+/* header */
+
+.navbar{
+  background-color: #1B2845;
+}
+
+/* admin layouts */
+
+.admin__layout{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.admin__layout .top__form,
+.admin__layout .top__form button
+{
+  margin-top: 5%;
+}
+
+.admin__layout .top__form label
+{
+  padding-top: 5%;
+}
+
+.admin__layout .top__form input,
+.admin__layout .top__form select
+{
+  width: 50%;
+}
+
+.table__student-group{
+  margin-top: 5%;
+}
+
+/* footer */
+
+footer{
+  background-color: #1B2845;
+}
+
+footer .container{
+  padding-top: 50px;
+}
+
+a,p{
+  color: white;
+}
+
+a{
+  text-decoration: none;
+}
+
+footer li{
+  list-style: none;
+  padding-bottom: 5%;
+}
+
+footer img{
+  width: 100%;
+}
+
+.text__author{
+  text-align: center;
+}
+
