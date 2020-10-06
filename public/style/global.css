@@ -47,7 +47,7 @@ footer .container{
   padding-top: 50px;
 }
 
-a,p{
+a{
   color: white;
 }
 
@@ -66,5 +66,32 @@ footer img{
 
 .text__author{
   text-align: center;
+  color: white;
+}
+
+.timetable__block{
+  background-color: #F2F2F2;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+  transition: 0.5s ease-out;
+  
+}
+
+.timetable__block:hover{
+  box-shadow: 8px 15px 10px rgba(0, 0, 0, 0.25);
+}
+
+.timetable__block h2{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.lesson__block{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.lesson__block p:first-child{
+  border-bottom: solid black 2px;
 }
 

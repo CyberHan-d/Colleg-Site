@@ -1,20 +1,12 @@
 {{> breadcrumbs-register}}
 
-<<<<<<< Updated upstream
 <div class="container admin__layout">
-=======
-<div class="container-fluid">
->>>>>>> Stashed changes
   <div class="row">
     <div class="col">
       <h1>Создать расписание</h1>
     </div>
   </div>
-<<<<<<< Updated upstream
   <form class="top__form" action="" method="post">
-=======
-  <form class="form" action="/register/timetable" method="post">
->>>>>>> Stashed changes
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
         <h2>Выберите группу</h2>
@@ -38,7 +30,7 @@
             <select class="form-select" name="lesson_1_Monday" id="first_lessons">
               <option selected>Пар нет</option>
               {{#each lessons}}
-              <option>{{name}} {{teacher}}</option>
+              <option>{{name}} {{teacher}} {{cabinet}}</option>
               {{else}}
               <option disabled>Создайте группы</option>
               {{/each}}
@@ -47,7 +39,7 @@
               <select class="form-select" name="lesson_2_Monday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -56,7 +48,7 @@
               <select class="form-select" name="lesson_3_Monday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -65,7 +57,7 @@
               <select class="form-select" name="lesson_4_Monday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -77,7 +69,7 @@
               <select class="form-select" name="lesson_1_Tuesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -86,7 +78,7 @@
               <select class="form-select" name="lesson_2_Tuesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -95,7 +87,7 @@
               <select class="form-select" name="lesson_3_Tuesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -104,7 +96,7 @@
               <select class="form-select" name="lesson_4_Tuesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -116,7 +108,7 @@
               <select class="form-select" name="lesson_1_Wednesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -125,7 +117,7 @@
               <select class="form-select" name="lesson_2_Wednesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -134,7 +126,7 @@
               <select class="form-select" name="lesson_3_Wednesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -143,7 +135,7 @@
               <select class="form-select" name="lesson_4_Wednesday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -155,7 +147,7 @@
               <select class="form-select" name="lesson_1_Thursday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -164,7 +156,7 @@
               <select class="form-select" name="lesson_2_Thursday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -173,7 +165,7 @@
               <select class="form-select" name="lesson_3_Thursday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -182,7 +174,7 @@
               <select class="form-select" name="lesson_4_Thursday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -194,7 +186,7 @@
               <select class="form-select" name="lesson_1_Friday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -203,7 +195,7 @@
               <select class="form-select" name="lesson_2_Friday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -212,7 +204,7 @@
               <select class="form-select" name="lesson_3_Friday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -221,7 +213,7 @@
               <select class="form-select" name="lesson_4_Friday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -233,7 +225,7 @@
               <select class="form-select" name="lesson_1_Saturday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -242,7 +234,7 @@
               <select class="form-select" name="lesson_2_Saturday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -251,7 +243,7 @@
               <select class="form-select" name="lesson_3_Saturday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -260,7 +252,7 @@
               <select class="form-select" name="lesson_4_Saturday" id="first_lessons">
                 <option selected>Пар нет</option>
                 {{#each lessons}}
-                <option>{{name}} {{teacher}}</option>
+                <option>{{name}} {{teacher}} {{cabinet}}</option>
                 {{else}}
                 <option disabled>Создайте группы</option>
                 {{/each}}
@@ -289,7 +281,154 @@
     </div>
   </form>
   {{!-- Это fuck блок нужно расположить как master slaves --}}
+  {{#each timeTable}}
   <div class="row">
+    <h1>Расписание {{group}}</h1>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 animation__timetable">
+      <div class="timetable__block">
+        {{#each monday}}
+        <h2>Понедельник</h2>
+        <div class="lesson__block">
+          <p>1 пара</p>
+          <p>{{lesson_1}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>2 пара</p>
+          <p>{{lesson_2}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>3 пара</p>
+          <p>{{lesson_3}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>4 пара</p>
+          <p>{{lesson_4}}</p>
+        </div>
+      {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="timetable__block">
+      {{#each tuesday}}
+        <h2>Вторник</h2>
+        <div class="lesson__block">
+          <p>1 пара</p>
+          <p>{{lesson_1}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>2 пара</p>
+          <p>{{lesson_2}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>3 пара</p>
+          <p>{{lesson_3}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>4 пара</p>
+          <p>{{lesson_4}}</p>
+        </div>
+      {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="timetable__block">
+      {{#each wednesday}}
+        <h2>Среда</h2>
+        <div class="lesson__block">
+          <p>1 пара</p>
+          <p>{{lesson_1}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>2 пара</p>
+          <p>{{lesson_2}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>3 пара</p>
+          <p>{{lesson_3}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>4 пара</p>
+          <p>{{lesson_4}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="timetable__block">
+        {{#each thursday}}
+        <h2>Четверг</h2>
+        <div class="lesson__block">
+          <p>1 пара</p>
+          <p>{{lesson_1}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>2 пара</p>
+          <p>{{lesson_2}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>3 пара</p>
+          <p>{{lesson_3}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>4 пара</p>
+          <p>{{lesson_4}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="timetable__block">
+        {{#each friday}}
+        <h2>Пятница</h2>
+        <div class="lesson__block">
+          <p>1 пара</p>
+          <p>{{lesson_1}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>2 пара</p>
+          <p>{{lesson_2}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>3 пара</p>
+          <p>{{lesson_3}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>4 пара</p>
+          <p>{{lesson_4}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="timetable__block">
+        {{#each saturday}}
+        <h2>Суббота</h2>
+        <div class="lesson__block">
+          <p>1 пара</p>
+          <p>{{lesson_1}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>2 пара</p>
+          <p>{{lesson_2}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>3 пара</p>
+          <p>{{lesson_3}}</p>
+        </div>
+        <div class="lesson__block">
+          <p>4 пара</p>
+          <p>{{lesson_4}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <p>Вы пока не создали расписание</p>
+  {{/each}}
+  {{!-- <div class="row">
     <div class="col">
       {{#if timeTable}}
         {{#each timeTable}}
@@ -323,5 +462,5 @@
         <p>Расписание не создано</p>
       {{/if}}
     </div>
-  </div>
+  </div> --}}
 </div>
