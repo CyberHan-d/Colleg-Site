@@ -4,9 +4,10 @@ const generatorPassword	= require("password-generator");
 const bcrypt						= require("bcrypt");
 const crash 						= require("./error");
 
-const url = "mongodb+srv://admin:W2Do1RgspeRpeSoU@college-kgk.zlmi7.mongodb.net/kgk";
+// const url = "mongodb+srv://admin:T77j3kxwBqgaAwU@college-kgk.zlmi7.mongodb.net/kgk";
+const url = "mongodb+srv://admin:T77j3kxwBqgaAwU@college-kgk.zlmi7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-mongo.set('debug', true); // Дебажим ебаный код 16.09.2020
+// mongo.set('debug', true); // Дебажим ебаный код 16.09.2020
 
 async function start(url) {
 	try {

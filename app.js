@@ -10,6 +10,8 @@ const initializePassport = require("./passport-config");
 const mongodb 			= require("./database");
 const greeting 			= require("./greeting");
 
+const port = process.env.PORT || 3000
+
 
 // Global variable
 // date
@@ -401,7 +403,7 @@ app.use(function(reg, res) {
 		console.log("Страница не найдена");
 	});
 
-app.listen(process.env.PORT);
+app.listen(port);
 console.log("Стартанули сервер. Версия " + process.env.VERSION);
 console.log(date);
 console.log(greeting.getMessage(os.userInfo().username));
