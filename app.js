@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const express 			= require("express");  // Подключение модулей
 const session				=	require("express-session");
 const expressHbs		= require("express-handlebars");
